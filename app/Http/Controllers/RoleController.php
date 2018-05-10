@@ -37,9 +37,13 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request , [
-            'permission_id' => 'required',
             'name' => 'required',
+            'permission_id' => 'required',
             'label' => 'required'
+        ], [
+            'name.required' => 'لطفا نام مقام را وارد کنید',
+            'permission_id.required' => 'لطفا دسترسی های مقام را انتخاب کنید',
+            'label.required' => 'لطفا توضیحات مقام را وارد کنید'
         ]);
 
         $role = Role::create([
