@@ -23,57 +23,51 @@
 </div>
 <!-- END Search Results Header -->
 
-@if(count($users))
+@if(count($usersChunk))
 
     <!-- Tables Row -->
     <div class="col-lg-12">
+
         <!-- Row Styles Block -->
         <div class="block">
-            <!-- Row Styles Content -->
-            <div class="table-responsive">
-                <table class="table table-borderless table-vcenter">
-                    <thead>
-                    <tr>
-                        <th class="text-center" style="width: 50px;">ID</th>
-                        <th>نام</th>
-                        <th>نام خانوادگی</th>
-                        <th>کد ملی</th>
-                        <th>ایمیل</th>
-                        <th>تاریخ عضویت</th>
-                        <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($users as $user)
-                        <tr>
-                            <td class="text-center">{{ $user->id }}</td>
-                            <td>{{ $user->firstName }}</td>
-                            <td>{{ $user->lastName }}</td>
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td><span class="label label-success">{{ $user->created_at }}</span></td>
+            <!-- Users Results -->
+            <div class="tab-pane" id="search-tab-users">
+                <div class="row">
+                    @foreach($usersChunk as $users)
+                        <div class="col-sm-6">
+                            <table class="table table-striped table-borderless table-hover table-vcenter">
+                                <tbody>
+                                @foreach($users as $user)
+                                    <tr class="animation-fadeInQuickInv">
+                                        <td class="text-center" style="width: 100px;"><img src="{{ asset('user-img/'.$user->image) }}" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar"></td>
+                                        <td><strong>{{ $user->fullName }}</strong></td>
+                                        <td class="text-center" style="width: 100px;">
+                                            <a href="{{ route('users.show', ['user' => $user->id]) }}" data-toggle="tooltip" title="مشاهده" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endforeach
+                </div>
 
-                            <td class="text-center">
-                                <a href="{{ route('users.show', ['user' => $user->id]) }}"  title="مشاهده پروفایل" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
-            <!-- END Row Styles Content -->
+            <!-- END Users Results -->
         </div>
         <!-- END Row Styles Block -->
+
+@endif
+
+@if(request('search') && !count($usersChunk))
+    <!-- END Tables Row -->
+    <div class="block full">
+        <!-- Get Started Content -->
+        نتیجه ای یافت نشد!
+        <!-- END Get Started Content -->
     </div>
 @endif
 
-@if(request('search') && !count($users))
-<!-- END Tables Row -->
-<div class="block full">
-    <!-- Get Started Content -->
-    نتیجه ای یافت نشد!
-    <!-- END Get Started Content -->
 </div>
-@endif
 
 @endsection
