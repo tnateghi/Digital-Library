@@ -213,8 +213,8 @@ class UserController extends Controller
     public function search()
     {
         if(! request('search')) {
-            $users = [];
-            return view('admin.user.search', compact('users'));
+            $usersChunk = [];
+            return view('admin.user.search', compact('usersChunk'));
         }
         else {
             $users = User::search(request('search'))->get();
