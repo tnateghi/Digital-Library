@@ -43,11 +43,11 @@
                         <tr>
                             <td>{{ $lend->book->name }}</td>
                             <td>{{ $lend->book->author }}</td>
-                            <td>{{ $lend->user->firstName.' '.$lend->user->lastName }}</td>
+                            <td>{{ $lend->user->fullName }}</td>
                             <td><span class="label label-success">@jalali($lend->created_at)</span></td>
                             @can('users-admin')
                             <td class="text-center">
-                                <a href="{{ route('users.show', ['user' => $lend->user_id]) }}" data-toggle="tooltip" data-placement="top" title="پروفایل {{ $lend->user->firstName.' '.$lend->user->lastName }}" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('users.activeLends', ['user' => $lend->user_id]) }}" data-toggle="tooltip" data-placement="top" title="امانت های جاری" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
                             </td>
                             @endcan
                         </tr>
