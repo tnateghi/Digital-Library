@@ -50,7 +50,7 @@
                 <div class="form-group form-actions">
                     <div class="col-md-8 col-md-offset-3">
                         <button type="submit" class="btn btn-effect-ripple btn-primary"> ذخیره</button>
-                        <a href="{{ route('roles.index') }}"><button class="btn btn-default">لیست مقام ها <i class="gi gi-undo"></i></button></a>
+                        <a href="{{ route('roles.index') }}"><button type="button" class="btn btn-default">لیست مقام ها <i class="gi gi-undo"></i></button></a>
                     </div>
                 </div>
             </form>
