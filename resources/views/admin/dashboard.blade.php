@@ -84,9 +84,8 @@
                 <h2>آخرین نوشته های وبلاگ</h2>
             </div>
 
-            <div class="block-content-full">
                 <div class="table-responsive">
-                    <table class="table table-borderless table-vcenter">
+                    <table class="table table-borderless table-vcenter table-hover">
                         <thead>
                             <tr>
                                 <th>عنوان</th>
@@ -114,7 +113,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
         </div>
         <!-- END Tickets List -->
     </div>
