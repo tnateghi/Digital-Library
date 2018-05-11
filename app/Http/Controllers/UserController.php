@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 
@@ -144,11 +145,11 @@ class UserController extends Controller
         return view('admin.user.show', compact('user'));
     }
 
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         $this->validation();
 
-        (new User)->create([
+        User::create([
             'username' => request('national-code'),
             'firstName' => request('first-name'),
             'lastName' => request('last-name'),
