@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Book;
+use App\Comment;
 use App\Lend;
 use App\Option;
 use Carbon\Carbon;
@@ -58,7 +59,8 @@ class HomeController extends Controller
         }
 
         $articles = Article::latest()->take(7)->get();
-        return view('admin.dashboard', compact('articles', 'lendDays', 'lendCount'));
+        $comments = Comment::latest()->take(3)->get();
+        return view('admin.dashboard', compact('articles', 'lendDays', 'lendCount', 'comments'));
     }
 
     public function test()
