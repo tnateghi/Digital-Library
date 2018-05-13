@@ -44,7 +44,7 @@
         </a>
     </div>
     <div class="col-sm-6 col-lg-3">
-        <a class="widget">
+        <a href="{{ route('articles.comments') }}" class="widget">
             <div class="widget-content widget-content-mini text-right clearfix">
                 <div class="widget-icon pull-left themed-background-danger">
                     <i class="gi gi-conversation text-light-op"></i>
@@ -108,7 +108,7 @@
         </script>
         <!-- Chart Widget -->
         <div class="widget">
-            <div class="widget-content border-bottom">امانت های هفت روز گذشته</div>
+            <div class="widget-content border-bottom"><strong>امانت های هفت روز گذشته</strong></div>
             <div class="widget-content border-bottom themed-background-muted">
                 <!-- Flot Charts (initialized in js/pages/readyDashboard.js), for more examples you can check out http://www.flotcharts.org/ -->
                 <div id="chart-classic-dash" style="height: 290px; padding: 0; position: relative;"></div>
@@ -117,35 +117,34 @@
         <!-- END Chart Widget -->
     </div>
 
+    @if(count($comments))
+        <div class="col-sm-12 col-lg-6">
 
-    <div class="col-sm-12 col-lg-6">
-
-
-        <!-- Twitter Widget -->
-        <div class="widget">
-            <div class="widget-content widget-content-mini border-bottom">
-                آخرین دیدگاه ها
+            <!-- Twitter Widget -->
+            <div class="widget">
+                <div class="widget-content widget-content-mini border-bottom">
+                    <strong>آخرین دیدگاه ها</strong>
+                </div>
+                <div class="widget-content">
+                    <ul class="media-list">
+                        @foreach($comments as $comment)
+                            <li class="media">
+                                <a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan class="pull-left">
+                                    <img style="width: 64px;height: 64px;" src="{{ asset('user-img/'.$comment->user->image) }}" alt="{{ $comment->user->fullName }}" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
+                                    <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
+                                    <p>{{ $comment->body }}</p>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-            <div class="widget-content">
-                <ul class="media-list">
-                    @foreach($comments as $comment)
-                        <li class="media">
-                            <a href="javascript:void(0)" class="pull-left">
-                                <img style="width: 64px;height: 64px;" src="{{ asset('user-img/'.$comment->user->image) }}" alt="{{ $comment->user->fullName }}" class="img-circle">
-                            </a>
-                            <div class="media-body">
-                                <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
-                                <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
-                                <p>{{ $comment->body }}</p>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+            <!-- END Twitter Widget -->
         </div>
-        <!-- END Twitter Widget -->
-
-    </div>
+    @endif
 
 </div>
 
