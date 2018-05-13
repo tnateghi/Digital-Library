@@ -9,6 +9,7 @@
     <meta name="description" content="library project by nateghi">
     <meta name="author" content="nateghi">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#5ccdde" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
 
     <!-- Icons -->
