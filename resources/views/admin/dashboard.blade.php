@@ -63,6 +63,9 @@
             <div class="block">
                 <div class="block-title">
                     <h2>آخرین نوشته های وبلاگ</h2>
+                    <div class="block-options pull-right">
+                        <a href="{{ route('articles.index') }}" class="btn btn-effect-ripple btn-default" data-toggle="tooltip" title="مشاهده همه"><i class="hi hi-circle-arrow-left"></i></a>
+                    </div>
                 </div>
 
                 <div class="table-responsive">
@@ -99,38 +102,22 @@
         </div>
     @endif
 
-    <div class="col-sm-12 col-lg-6">
-        <script>
-            var dataSales           = [ @foreach($lendCount as $key => $value)[{{ $key+1 }},"{{ $value }}"] @if(!$loop->last),@endif @endforeach];
-
-
-            var dataMonths          = [ @foreach($lendDays as $key => $value)[{{ $key+1 }},"{{ $value }}"] @if(!$loop->last),@endif @endforeach];
-        </script>
-        <!-- Chart Widget -->
-        <div class="widget">
-            <div class="widget-content border-bottom"><strong>امانت های هفت روز گذشته</strong></div>
-            <div class="widget-content border-bottom themed-background-muted">
-                <!-- Flot Charts (initialized in js/pages/readyDashboard.js), for more examples you can check out http://www.flotcharts.org/ -->
-                <div id="chart-classic-dash" style="height: 290px; padding: 0; position: relative;"></div>
-            </div>
-        </div>
-        <!-- END Chart Widget -->
-    </div>
-
     @if(count($comments))
         <div class="col-sm-12 col-lg-6">
-
-            <!-- Twitter Widget -->
-            <div class="widget">
-                <div class="widget-content widget-content-mini border-bottom">
-                    <strong>آخرین دیدگاه ها</strong>
+            <!-- latest comments Block -->
+            <div class="block">
+                <div class="block-title">
+                    <h2>آخرین دیدگاه ها</h2>
+                    <div class="block-options pull-right">
+                        <a href="{{ route('articles.comments') }}" class="btn btn-effect-ripple btn-default" data-toggle="tooltip" title="مشاهده همه"><i class="hi hi-circle-arrow-left"></i></a>
+                    </div>
                 </div>
                 <div class="widget-content">
                     <ul class="media-list">
                         @foreach($comments as $comment)
                             <li class="media">
                                 <a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan class="pull-left">
-                                    <img style="width: 64px;height: 64px;" src="{{ asset('user-img/'.$comment->user->image) }}" alt="{{ $comment->user->fullName }}" class="img-circle">
+                                    <img style="width: 40px;height: 40px;" src="{{ asset('user-img/'.$comment->user->image) }}" alt="{{ $comment->user->fullName }}" class="img-circle">
                                 </a>
                                 <div class="media-body">
                                     <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
@@ -142,7 +129,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- END Twitter Widget -->
+            <!-- END latest comments block -->
         </div>
     @endif
 

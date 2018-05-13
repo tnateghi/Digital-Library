@@ -22,8 +22,8 @@ var ReadyDashboard = function() {
                     }
                 });
             });
-
-            /* Mini Line Charts with jquery.sparkline plugin, for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about */
+/*
+            /!* Mini Line Charts with jquery.sparkline plugin, for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about *!/
             var widgetChartLineOptions = {
                 type: 'line',
                 width: '200px',
@@ -44,12 +44,12 @@ var ReadyDashboard = function() {
             };
             $('#widget-dashchart-sales').sparkline('html', widgetChartLineOptions);
 
-            /*
+            /!*
              * Flot Charts Jquery plugin is used for charts
              *
              * For more examples or getting extra plugins you can check http://www.flotcharts.org/
              * Plugins included in this template: pie, resize, stack, time
-             */
+             *!/
 
             // Get the element where we will attach the chart
             var chartClassicDash    = $('#chart-classic-dash');
@@ -102,7 +102,7 @@ var ReadyDashboard = function() {
                     $('#chart-tooltip').remove();
                     previousPoint = null;
                 }
-            });
+            });*/
         }
     };
 }();
