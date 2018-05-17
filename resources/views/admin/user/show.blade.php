@@ -40,6 +40,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-4 col-md-offset-1">شناسه : </label>
+                    <div class="col-md-7">
+                        <p class="form-control-static">{{ $user->id }}</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-4 col-md-offset-1">تاریخ عضویت : </label>
                     <div class="col-md-7">
                         <p class="form-control-static">{{$user->created_at}}</p>
