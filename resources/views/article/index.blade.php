@@ -19,9 +19,7 @@
             @foreach($row as $article)
             <div class="col-md-6">
                 <a href="{{ route('article.show', ['article' => $article->slug]) }}" class="post">
-                    <div class="post-image">
-                        <img src="/blog/img/placeholders/photos/photo13.jpg" alt="" class="img-responsive">
-                    </div>
+
                     <div class="text-muted pull-left">19 دی 1396</div>
                     <h2 class="h4">
                         <strong>{{ $article->title }}</strong>

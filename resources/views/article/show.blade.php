@@ -30,24 +30,7 @@
 </section>
 
 <!-- END Post -->
-<!-- Author -->
-<section class="site-content site-section border-bottom themed-background-muted">
-    <div class="container">
-        <div class="row row-items">
-            <div class="col-md-2 col-md-offset-2 text-center">
-                <img src="{{ $article->user->getImage }}" alt="{{ $article->user->fullname }}" class="img-circle img-thumbnail img-thumbnail-avatar-2x">
-            </div>
-            <div class="col-md-6">
-                <h4>
-                    <small class="pull-left"><strong>{{ $article->created_at }}</strong></small>
-                    <strong>{{ $article->user->fullname }}</strong>
-                </h4>
-                <b><p>{{ $article->user->status }}</p></b>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- END Author -->
+
 
 @include('article.layouts.comments')
 
