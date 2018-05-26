@@ -48,7 +48,7 @@
                 <!-- END Add Comment -->
                 @else
 
-                <div class="alert alert-danger site-block">
+                <div class="alert alert-warning site-block">
                     <p>برای ثبت دیدگاه ابتدا باید وارد شوید <a href="{{ route('login') }}" class="alert-link">ورود به سیستم </a></p>
                 </div>
 
