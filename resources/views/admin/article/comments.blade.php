@@ -43,7 +43,7 @@
                             <img class="img-thumbnail-transparent timeline-icon" src="{{ asset('user-img/'.$comment->user->image) }}" />
                             <div class="timeline-content">
                                 <p class="push-bit small"><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></p>
-                                <p class="well text-muted">{{ $comment->body }}</p>
+                                <p>{{ $comment->body }}</p>
                             </div>
                         </li>
                     @endforeach
