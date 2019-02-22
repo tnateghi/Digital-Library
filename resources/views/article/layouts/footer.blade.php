@@ -4,7 +4,7 @@
         <!-- Footer Links -->
         <div class="row">
             <div class="col-sm-12 text-center">
-                توسط <a target="_blank" href="https://t-nateghi.ir/">ناطقی</a>
+                توسعه یافته با <i class="fa fa-heart text-danger"></i> توسط <a target="_blank" href="https://t-nateghi.ir/">ناطقی</a>
             </div>
         </div>
         <!-- END Footer Links -->
