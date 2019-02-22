@@ -25,7 +25,7 @@ class CreateBooksTable extends Migration
             $table->integer('ed_year');
             $table->text('description')->nullable();
 
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('book_categories')->onDelete('cascade');
 
             $table->timestamps();
