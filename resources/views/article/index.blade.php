@@ -13,14 +13,18 @@
 <!-- Latest Posts -->
 <section class="site-content site-section">
     <div class="container">
-
+        @if($articles->count() == 0)
+            <div class="row row-items">
+                <p><strong>پستی برای نمایش وجود ندارد !</strong></p>
+            </div>
+        @endif
         @foreach($articlesChunk as $row)
         <div class="row row-items">
             @foreach($row as $article)
             <div class="col-md-6">
                 <a href="{{ route('article.show', ['article' => $article->slug]) }}" class="post">
 
-                    <div class="text-muted pull-left">19 دی 1396</div>
+                    <div class="text-muted pull-left">{{ $article->created_at }}</div>
                     <h2 class="h4">
                         <strong>{{ $article->title }}</strong>
                     </h2>
