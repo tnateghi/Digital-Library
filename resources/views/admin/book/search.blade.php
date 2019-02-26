@@ -41,7 +41,7 @@
                         <th>سال چاپ</th>
                         <th class="text-center">وضعیت</th>
 
-                        @can('books-admin') <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th> @endcan
+                        @can('books-admin') <script>var admin = 1;</script> <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th> @endcan
                     </tr>
                     </thead>
                     <tbody>

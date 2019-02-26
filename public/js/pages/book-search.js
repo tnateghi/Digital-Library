@@ -27,8 +27,13 @@ $("#form-validation").submit(function(e){
                 else {
                     status = "<span class='label label-danger'>ناموجود</span>";
                 }
-                var link  = "<a href='/admin/books/book_id'  class='btn btn-effect-ripple btn-xs btn-success' title=\"مشاهده\"><i class='fa fa-eye'></i></a>";
-                link = link.replace('book_id', item.id);
+                if(typeof admin !== 'undefined'){
+                    var link  = "<a href='/admin/books/book_id'  class='btn btn-effect-ripple btn-xs btn-success' title=\"مشاهده\"><i class='fa fa-eye'></i></a>";
+                    link = link.replace('book_id', item.id);
+                } else {
+                    var link = "";
+                }
+
 
                 var category = '<span class="label label-info">' + item.category + '</span>';
                 var tr = $('<tr>').append(
