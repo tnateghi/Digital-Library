@@ -122,7 +122,24 @@
                                 <div class="media-body">
                                     <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
                                     <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
-                                    <p>{{ $comment->body }}</p>
+
+                                    @php
+
+                                        $string = $comment->body;
+                                        $string = strip_tags($string);
+                                        if (strlen($string) > 300) {
+                                            // truncate string
+                                            $stringCut = substr($string, 0, 250);
+                                            $endPoint = strrpos($stringCut, ' ');
+
+                                            //if the string doesn't contain any space then it will cut without word basis.
+                                            $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
+                                            $string .= '...';
+                                        }
+
+                                    @endphp
+
+                                    <p>{{ $string }}</p>
                                 </div>
                             </li>
                         @endforeach
