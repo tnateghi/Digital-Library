@@ -1,30 +1,31 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<!-- Blank Header -->
-<div class="content-header">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="header-section">
-                <h1>لیست مقام ها</h1>
+    <!-- Blank Header -->
+    <div class="content-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="header-section">
+                    <h1>لیست مقام ها</h1>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6 hidden-xs">
-            <div class="header-section">
-                <ul class="breadcrumb breadcrumb-top">
-                    <li>مدیریت مقام ها</li>
-                    <li><a href="">لیست مقام ها</a></li>
-                </ul>
+            <div class="col-sm-6 hidden-xs">
+                <div class="header-section">
+                    <ul class="breadcrumb breadcrumb-top">
+                        <li>مدیریت مقام ها</li>
+                        <li><a href="">لیست مقام ها</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- END Blank Header -->
+    <!-- END Blank Header -->
 
-<div class="col-lg-12">
+    <div class="col-lg-12">
 
-@if(count($roles))
-    <!-- Form Validation Content -->
+    @if(count($roles))
+
+        <!-- Form Validation Content -->
 
         <!-- Row Styles Block -->
         <div class="block">
@@ -63,14 +64,14 @@
         <!-- END Form Validation Content -->
     @else
 
-<div class="block full">
-    <!-- Get Started Content -->
-    لیست مقام ها خالی می باشد!
-    <!-- END Get Started Content -->
-</div>
-@endif
+        <div class="block full">
+            <!-- Get Started Content -->
+            لیست مقام ها خالی می باشد!
+            <!-- END Get Started Content -->
+        </div>
+    @endif
 
-@include('admin.layouts.messages')
+    @include('admin.layouts.messages')
 
-</div>
+    </div>
 @endsection

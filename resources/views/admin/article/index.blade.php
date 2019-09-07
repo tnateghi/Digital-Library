@@ -43,26 +43,28 @@
                             <tr>
                                 <th>عنوان</th>
                                 <th>نویسنده</th>
-                                <th class="text-center">وضعیت</th>
                                 <th class="text-center">تاریخ انتشار</th>
                                 <th class="text-center"><i class="fa fa-comments"></i></th>
+                                <th class="text-center">وضعیت</th>
+
                                 <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($articles as $article)
                                 <tr>
-                                    <td><a href="#"><strong>{{ $article->title }}</strong></a></td>
+                                    <td><strong>{{ $article->title }}</strong></td>
 
                                     <td>{{ $article->user->firstName.' '.$article->user->lastName }}</td>
+
+                                    <td class="text-center">{{ $article->created_at }}</td>
+
+                                    <td class="text-center"><span class="badge">{{ $article->comments->count() }}</span></td>
                                     @if($article->state == 'publish')
                                         <td class="text-center"><span class="label label-success">منتشر شده</span></td>
                                     @else
                                         <td class="text-center"><span class="label label-danger">پیش نویس</span></td>
                                     @endif
-                                    <td class="text-center">{{ $article->created_at }}</td>
-
-                                    <td class="text-center"><span class="badge">{{ $article->comments->count() }}</span></td>
                                     <td class="text-center">
                                         <a href="{{ route('articles.edit', ['article' => $article->slug]) }}" title="ویرایش" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-pencil"></i></a>
                                         <a onclick="document.getElementById('deleteForm').action='{{ route('articles.destroy', ['article' => $article->slug]) }}'" href="#modal-fade" data-toggle="modal" title="حذف" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;"><i class="fa fa-times"></i></a>

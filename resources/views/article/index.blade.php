@@ -29,26 +29,24 @@
                         <strong>{{ $article->title }}</strong>
                     </h2>
                     @php
+                            $string = $article->body;
+                            $string = strip_tags($string);
+                            if (strlen($string) > 300) {
 
-                    $string = $article->body;
-                    $string = strip_tags($string);
-                    if (strlen($string) > 300) {
+                                // truncate string
+                                $stringCut = substr($string, 0, 250);
+                                $endPoint = strrpos($stringCut, ' ');
 
-                        // truncate string
-                        $stringCut = substr($string, 0, 250);
-                        $endPoint = strrpos($stringCut, ' ');
+                                //if the string doesn't contain any space then it will cut without word basis.
+                                $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
+                                $string .= '...';
+                            }
 
-                        //if the string doesn't contain any space then it will cut without word basis.
-                        $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
-                        $string .= '...';
-                    }
-
-                    //if string is too small a br tag added to end just for beautiful view
-                    if (strlen($string) < 162) {
-                        $string .= '<br><br>';
-                    }
-                    //echo $string;
-
+                            //if string is too small a br tag added to end just for beautiful view
+                            if (strlen($string) < 162) {
+                                $string .= '<br><br>';
+                            }
+                            //echo $string;
                     @endphp
                     <p>{!! $string !!}</p>
                 </a>
