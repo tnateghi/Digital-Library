@@ -61,7 +61,8 @@
                     <div class="form-group">
                         <label class="col-md-4 col-md-offset-1">اضافه شده توسط : </label>
                         <div class="col-md-6">
-                            <p class="form-control-static">{{ $book->user->fullName }}</p>
+                            @can('users-admin') <p class="form-control-static"><a href="{{ route('users.show', ['user' => $book->user->id]) }}" target="_blank">{{ $book->user->fullName }} <i class="gi gi-new_window"></i></a></p> @endcan
+                            @cannot('users-admin') <p class="form-control-static">{{ $book->user->fullName }}</p> @endcannot
                         </div>
                     </div>
 
@@ -69,7 +70,6 @@
                         <div class="col-md-12 col-md-offset-1">
                             <a href="{{ route('books.edit', ['book' => $book->id]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-edit"></i> ویرایش</button></a>
                             <button onclick="newWindow = window.open('{{ asset(substr(barcode($book->id), 1)) }}');newWindow.print();" type="button" class="btn btn-effect-ripple btn-warning" style="overflow: hidden; position: relative;"><i class="fa fa-print"></i> چاپ بارکد</button>
-                            @can('users-admin') <a href="{{ route('users.show', ['user' => $book->user->id]) }}"><button type="button" class="btn btn-effect-ripple btn-info" style="overflow: hidden; position: relative;"><i class="gi gi-user"></i> مشاهده پروفایل {{ $book->user->fullName }}</button></a> @endcan
                             <a href="#modal-fade" data-toggle="modal" title="حذف"><button type="button" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative;"><i class="fa fa-trash-o"></i> حذف کتاب</button></a>
 
                         </div>
