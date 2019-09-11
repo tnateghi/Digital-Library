@@ -23,13 +23,9 @@
 */
 
 @font-face {
-	font-family : "yekan";
+	font-family : "iransans";
 	src : url("fonts/iransans.woff");
-    font-display: fallback;
 }
-
-/* Include yekan font from Google Web Fonts */
-@import url('https://fonts.googleapis.com/css?family=Harmattan:300,400,400italic,500,500italic,600,600italic,700,700italic');
 
 /* Preloader */
 #page-wrapper.page-loading {
@@ -103,7 +99,7 @@
 
 /* Main Structure */
 body {
-    font-family: "yekan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "iransans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #454e59;
     background-color: #454e59;
 	direction : rtl;
@@ -1640,7 +1636,7 @@ a[data-toggle="lightbox-image"]:hover img {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "yekan", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "iransans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
 }
 

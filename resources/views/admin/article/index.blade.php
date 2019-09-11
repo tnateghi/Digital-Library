@@ -53,7 +53,7 @@
                             <tbody>
                             @foreach($articles as $article)
                                 <tr>
-                                    <td><strong>{{ $article->title }}</strong></td>
+                                    <td><a href="{{ route('article.show', ['article' => $article->slug]) }}" target="_blank"><strong>{{ $article->title }}</strong></a></td>
 
                                     <td>{{ $article->user->firstName.' '.$article->user->lastName }}</td>
 
