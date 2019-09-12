@@ -24,6 +24,7 @@ Route::get('article/{article}', 'HomeController@show')->name('article.show');
 Route::post('article/{article}/comment', 'CommentController@store')->middleware('auth')->name('comment.store');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
+    $this->get('docs', 'HomeController@docs')->name('docs');
     $this->get('dashboard', 'HomeController@dashboard')->name('dashboard');
     $this->get('settings', 'HomeController@settings')->name('settings')->middleware('can:settings-admin');
     $this->get('statistics', 'HomeController@statistics')->name('statistics');
