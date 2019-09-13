@@ -17,7 +17,7 @@ html {
 
 @font-face {
 	font-family : "iransans";
-	src : url("../../css/fonts/iransans.woff");
+	src : url("fonts/iransans.woff");
 }
 
 pre {

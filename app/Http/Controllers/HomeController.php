@@ -194,8 +194,4 @@ class HomeController extends Controller
         return view('admin.book.search');
     }
 
-    public function docs()
-    {
-        return view('admin.docs');
-    }
 }

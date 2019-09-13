@@ -202,11 +202,6 @@
                     <a title="سوالات متداول" {{ href('admin-faq') }}><i class="gi gi-circle_question_mark sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">سوالات متداول</span></a>
                 </li>
 
-                @if(isAdmin())
-                    <li>
-                        <a title="مستندات" {{ href('docs') }} target="_blank"><i class="gi gi-notes_2 sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">مستندات</span></a>
-                    </li>
-                @endif
             </ul>
             <!-- END Sidebar Navigation -->
 
