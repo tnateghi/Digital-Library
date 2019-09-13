@@ -18,10 +18,6 @@
 
 And ten more features
 
-## Website
-
-https://mylp.ir
-
 ## Project source
 
 https://github.com/tohidnateghi/mylp
