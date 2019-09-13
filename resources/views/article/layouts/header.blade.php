@@ -22,9 +22,9 @@
                 <li>
                     <a href="/faq"  @if (\Request::is('faq')) class="active" @endif>سوالات متداول</a>
                 </li>
-                <li>
+                {{--<li>
                     <a href="/contact" @if (\Request::is('contact')) class="active" @endif>تماس با ما</a>
-                </li>
+                </li>--}}
 
                 @if(auth()->guest())
                     <li>

@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@listAll');
 Route::get('faq', 'HomeController@faq')->name('faq');
-Route::get('contact', 'HomeController@contact')->name('contact');
+//Route::get('contact', 'HomeController@contact')->name('contact');
 
 Route::get('article/{article}', 'HomeController@show')->name('article.show');
 Route::post('article/{article}/comment', 'CommentController@store')->middleware('auth')->name('comment.store');

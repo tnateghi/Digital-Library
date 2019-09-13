@@ -15,13 +15,13 @@
     <!-- Right Header Navigation -->
     <ul class="nav navbar-nav-custom pull-right">
 
-        <!-- Alternative Sidebar Toggle Button -->
+        {{--<!-- Alternative Sidebar Toggle Button -->
         <li>
             <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar-alt');this.blur();">
                 <i class="gi gi-settings"></i>
             </a>
         </li>
-        <!-- END Alternative Sidebar Toggle Button -->
+        <!-- END Alternative Sidebar Toggle Button -->--}}
 
         {{--<!-- Language selection button -->
         <li class="dropdown">

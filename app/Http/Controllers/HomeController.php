@@ -38,10 +38,10 @@ class HomeController extends Controller
         return view('article.faq');
     }
 
-    public function contact()
+   /* public function contact()
     {
         return view('article.contact');
-    }
+    }*/
 
     /**
      * Show the application dashboard.
