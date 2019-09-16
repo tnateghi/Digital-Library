@@ -113,6 +113,6 @@
 @endsection
 
 @section('scripts')
-    <script src="/ajs/pages/formsValidation.js"></script>
+    <script src="/js/pages/bookCreate.js"></script>
     <script>$(function(){ FormsValidation.init(); });</script>
 @endsection
