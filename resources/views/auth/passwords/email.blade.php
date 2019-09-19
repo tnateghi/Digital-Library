@@ -1,4 +1,4 @@
-@extends('admin.layouts.auth')
+@extends('auth.master')
 
 @section('content')
     <div id="login-container">
