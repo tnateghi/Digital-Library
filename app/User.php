@@ -77,7 +77,7 @@ class User extends Authenticatable
             return Gravatar::get($this->email);
         }
 
-        return asset('user-img/'.$value);
+        return asset('img/placeholders/avatars/'.$value);
     }
 
     public function isAdmin()

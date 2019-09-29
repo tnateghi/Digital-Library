@@ -22,7 +22,7 @@
                         <label class="col-md-3 control-label">تصویر فعلی : </label>
                         <div class="col-md-8">
                             <div class="widget">
-                                <img src="{{ asset('user-img/'.$user->image) }}" style="border-radius: 10px;width:100px;height:100px;" alt="avatar" class="img-circle">
+                                <img src="{{ $user->getImage }}" style="border-radius: 10px;width:100px;height:100px;" alt="avatar" class="img-circle">
                             </div>
                         </div>
                     </div>
