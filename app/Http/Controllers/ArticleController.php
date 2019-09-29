@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Comment;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {

@@ -6,14 +6,10 @@ use App\Article;
 use App\Book;
 use App\Comment;
 use App\Lend;
-use App\Option;
 use Carbon\Carbon;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
-use function MongoDB\BSON\toJSON;
 use Morilog\Jalali\jDate;
 
 class HomeController extends Controller

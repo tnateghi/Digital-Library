@@ -61,8 +61,3 @@
     <!-- END Form Validation Content -->
 
 @endsection
-
-@section('scripts')
-    <script src="/ajs/pages/formsValidation.js"></script>
-    <script>$(function(){ FormsValidation.init(); });</script>
-@endsection

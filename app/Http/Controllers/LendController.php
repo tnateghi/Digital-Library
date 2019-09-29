@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
 use App\Lend;
 use App\User;
 use Carbon\Carbon;
