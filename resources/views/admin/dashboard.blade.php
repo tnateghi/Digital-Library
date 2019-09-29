@@ -71,29 +71,29 @@
                     <div class="table-responsive">
                         <table class="table table-borderless table-vcenter table-hover">
                             <thead>
-                            <tr>
-                                <th>عنوان</th>
-                                <th class="text-center">وضعیت</th>
-                                <th class="text-center">تاریخ انتشار</th>
-                                <th class="text-center"><i class="fa fa-comments"></i></th>
-                            </tr>
+                                <tr>
+                                    <th>عنوان</th>
+                                    <th class="text-center">وضعیت</th>
+                                    <th class="text-center">تاریخ انتشار</th>
+                                    <th class="text-center"><i class="fa fa-comments"></i></th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @foreach($articles as $article)
-                                <tr>
-                                    <td><a href="{{ route('article.show', ['article' => $article->slug]) }}" target="_blank"><strong>{{ $article->title }}</strong></a></td>
+                                @foreach($articles as $article)
+                                    <tr>
+                                        <td><a href="{{ route('article.show', ['article' => $article->slug]) }}" target="_blank"><strong>{{ $article->title }}</strong></a></td>
 
-                                    @if($article->state == 'publish')
-                                        <td class="text-center"><span class="label label-success">منتشر شده</span></td>
-                                    @else
-                                        <td class="text-center"><span class="label label-danger">پیش نویس</span></td>
-                                    @endif
+                                        @if($article->state == 'publish')
+                                            <td class="text-center"><span class="label label-success">منتشر شده</span></td>
+                                        @else
+                                            <td class="text-center"><span class="label label-danger">پیش نویس</span></td>
+                                        @endif
 
-                                    <td class="text-center">{{ $article->created_at }}</td>
+                                        <td class="text-center">{{ $article->created_at }}</td>
 
-                                    <td class="text-center"><span class="badge">{{ $article->comments->count() }}</span></td>
-                                </tr>
-                            @endforeach
+                                        <td class="text-center"><span class="badge">{{ $article->comments->count() }}</span></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -155,8 +155,6 @@
 @endsection
 
 @section('scripts')
-
-<script src="/js/pages/readyDashboard.js"></script>
-<script>$(function(){ ReadyDashboard.init(); });</script>
-
+    <script src="/js/pages/readyDashboard.js"></script>
+    <script>$(function(){ ReadyDashboard.init(); });</script>
 @endsection

@@ -51,12 +51,12 @@
                             </div>
                         @endforeach
                     </div>
-
                 </div>
                 <!-- END Users Results -->
             </div>
             <!-- END Row Styles Block -->
-
+        </div>
+        <!-- END Tables Row -->
     @endif
 
     @if(request('search') && !count($usersChunk))
@@ -68,6 +68,5 @@
         </div>
     @endif
 
-    </div>
 
 @endsection

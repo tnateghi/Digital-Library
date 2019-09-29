@@ -61,12 +61,12 @@
                 </li>
                 <li class="divider"><li>
                 @can('settings-admin')
-                <li>
-                    <a href="{{ route('settings') }}">
-                        <i class="gi gi-settings fa-fw pull-right"></i>
-                        تنظیمات
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ route('settings') }}">
+                            <i class="gi gi-settings fa-fw pull-right"></i>
+                            تنظیمات
+                        </a>
+                    </li>
                 @endcan
                 <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="post">{!! csrf_field() !!}</form>

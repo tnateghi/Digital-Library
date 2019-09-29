@@ -58,7 +58,6 @@
         </div>
         <!-- END Login Block -->
 
-
         @include('auth.footer')
     </div>
     <!-- END Login Container -->

@@ -29,7 +29,6 @@
                 <ul class="nav nav-tabs" data-toggle="tabs">
                     <li @if(!$errors->has('username')) class="active" @endif><a href="#block-tabs-add-lend">ثبت امانت</a></li>
                     <li @if($errors->has('username')) class="active" @endif><a href="#block-tabs-extend">تمدید و بازگشت امانت</a></li>
-    {{--                <li @if($errors->has('return-username')) class="active" @endif><a href="#block-tabs-return">ثبت بازگشت</a></li>--}}
                 </ul>
             </div>
 

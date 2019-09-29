@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <!-- Intro -->
     <section class="site-section site-section-top site-section-light themed-background-dark">
         <div class="container">
@@ -12,6 +10,7 @@
     </section>
     <!-- END Intro -->
 
+    <!-- Post -->
     <section class="site-content site-section border-bottom">
         <div class="container">
             <div class="row">
@@ -23,10 +22,7 @@
             </div>
         </div>
     </section>
-
     <!-- END Post -->
-
-
     @include('article.layouts.comments')
 
 @endsection
