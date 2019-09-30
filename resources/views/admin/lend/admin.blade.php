@@ -13,7 +13,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>امانت</li>
-                        <li><a href="">مدیریت امانت</a></li>
+                        <li>مدیریت امانت</li>
                     </ul>
                 </div>
             </div>

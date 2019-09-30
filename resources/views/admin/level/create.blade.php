@@ -14,7 +14,7 @@
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت مقام ها</li>
                         <li>مدیریت کاربران مدیر</li>
-                        <li><a href="">افزودن مدیر جدید</a></li>
+                        <li>افزودن مدیر جدید</li>
                     </ul>
                 </div>
             </div>

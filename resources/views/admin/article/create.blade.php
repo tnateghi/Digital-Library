@@ -13,7 +13,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت نوشته ها</li>
-                        <li><a href="">افزودن نوشته جدید</a></li>
+                        <li>افزودن نوشته جدید</li>
                     </ul>
                 </div>
             </div>

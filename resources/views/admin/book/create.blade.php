@@ -13,7 +13,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت کتاب ها</li>
-                        <li><a href="">افزودن کتاب جدید</a></li>
+                        <li>افزودن کتاب جدید</li>
                     </ul>
                 </div>
             </div>

@@ -14,7 +14,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت کاربران</li>
-                        <li><a href="">لیست کاربران</a></li>
+                        <li>لیست کاربران</li>
                     </ul>
                 </div>
             </div>

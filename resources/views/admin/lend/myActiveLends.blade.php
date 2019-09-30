@@ -14,7 +14,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>امانت های من</li>
-                        <li><a href="">امانت های جاری</a></li>
+                        <li>امانت های جاری</li>
                     </ul>
                 </div>
             </div>

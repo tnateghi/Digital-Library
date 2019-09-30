@@ -14,7 +14,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت نوشته ها</li>
-                        <li><a href="">دیدگاه ها</a></li>
+                        <li>دیدگاه ها</li>
                     </ul>
                 </div>
             </div>

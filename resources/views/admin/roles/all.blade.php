@@ -13,7 +13,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>مدیریت مقام ها</li>
-                        <li><a href="">لیست مقام ها</a></li>
+                        <li>لیست مقام ها</li>
                     </ul>
                 </div>
             </div>

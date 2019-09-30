@@ -12,8 +12,8 @@
             <div class="col-sm-6 hidden-xs">
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
-                        <li>مدیریت وبلاگ</li>
-                        <li><a href="">نوشته ها</a></li>
+                        <li>مدیریت نوشته ها</li>
+                        <li>نوشته ها</li>
                     </ul>
                 </div>
             </div>

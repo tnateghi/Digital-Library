@@ -13,7 +13,7 @@
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
                         <li>امانت</li>
-                        <li><a href="">لیست کامل امانت های جاری</a></li>
+                        <li>لیست کامل امانت های جاری</li>
                     </ul>
                 </div>
             </div>
