@@ -23,8 +23,14 @@
 */
 
 @font-face {
-	font-family : "iransans";
-	src : url("fonts/iransans.woff");
+    font-family: Vazir;
+    src: url('fonts/vazir-font/Vazir-Light-FD.eot');
+    src: url('fonts/vazir-font/Vazir-Light-FD.eot?#iefix') format('embedded-opentype'),
+    url('fonts/vazir-font/Vazir-Light-FD.woff2') format('woff2'),
+    url('fonts/vazir-font/Vazir-Light-FD.woff') format('woff'),
+    url('fonts/vazir-font/Vazir-Light-FD.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
 }
 
 /* Preloader */
@@ -99,7 +105,7 @@
 
 /* Main Structure */
 body {
-    font-family: "iransans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Vazir", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #454e59;
     background-color: #454e59;
 	direction : rtl;
@@ -1636,7 +1642,7 @@ a[data-toggle="lightbox-image"]:hover img {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "iransans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Vazir", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
 }
 
