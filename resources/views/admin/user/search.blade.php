@@ -39,7 +39,7 @@
                                     <tbody>
                                     @foreach($users as $user)
                                         <tr class="animation-fadeInQuickInv">
-                                            <td class="text-center" style="width: 100px;"><img src="{{ asset('user-img/'.$user->image) }}" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar"></td>
+                                            <td class="text-center" style="width: 100px;"><img src="{{ $user->getImage }}" alt="avatar" class="img-circle img-thumbnail img-thumbnail-avatar"></td>
                                             <td><strong>{{ $user->fullName }}</strong></td>
                                             <td class="text-center" style="width: 100px;">
                                                 <a href="{{ route('users.show', ['user' => $user->id]) }}" data-toggle="tooltip" title="مشاهده" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>

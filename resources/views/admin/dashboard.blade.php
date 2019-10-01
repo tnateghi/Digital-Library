@@ -117,7 +117,7 @@
                             @foreach($comments as $comment)
                                 <li class="media">
                                     <a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan class="pull-left">
-                                        <img style="width: 40px;height: 40px;" src="{{ asset('user-img/'.$comment->user->image) }}" alt="{{ $comment->user->fullName }}" class="img-circle">
+                                        <img style="width: 40px;height: 40px;" src="{{ $comment->user->getImage }}" alt="{{ $comment->user->fullName }}" class="img-circle">
                                     </a>
                                     <div class="media-body">
                                         <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
