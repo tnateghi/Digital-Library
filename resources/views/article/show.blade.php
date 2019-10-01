@@ -1,4 +1,4 @@
-@extends('article.master')
+@extends('article.master', ['title' => $article->title])
 
 @section('content')
 

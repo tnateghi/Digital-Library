@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'افزودن کتاب جدید'])
 
 @section('content')
     <!-- Blank Header -->

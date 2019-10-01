@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'اطلاعات کاربر'])
 
 @section('content')
 

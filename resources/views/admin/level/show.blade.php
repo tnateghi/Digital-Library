@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'مقام های کاربر'])
 
 @section('content')
     <div class="row">

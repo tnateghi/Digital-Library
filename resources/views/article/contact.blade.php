@@ -1,4 +1,4 @@
-@extends('article.master')
+@extends('article.master', ['title' => 'تماس با ما'])
 
 @section('content')
 

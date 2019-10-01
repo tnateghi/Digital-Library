@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'امانت های جاری کاربر'])
 
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'ویرایش مقام های کاربر'])
 
 @section('content')
     <!-- Form Validation Content -->
