@@ -22,6 +22,7 @@
 /* Include Lato font from Google Web Fonts */
 /*@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400italic,500,500italic,600,600italic,700,700italic');*/
 
+/* Add font Vazir */
 @font-face {
     font-family: Vazir;
     src: url('fonts/vazir-font/Vazir-Light-FD.eot');

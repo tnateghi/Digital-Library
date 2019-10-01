@@ -96,3 +96,8 @@
     </div>
     <!-- END Form Validation Content -->
 @endsection
+
+@section('scripts')
+    <script src="/js/pages/userCreate.js"></script>
+    <script>$(function(){ FormsValidation.init(); });</script>
+@endsection
