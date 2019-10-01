@@ -1,6 +1,7 @@
 /node_modules
 /public/storage
 /public/user-img
+/public/img/barcode
 /storage/*.key
 /vendor
 /.idea
