@@ -23,7 +23,7 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        return view('admin.book.show', compact('book', 'barcode'));
+        return view('admin.book.show', compact('book'));
     }
 
     public function destroy(Book $book)

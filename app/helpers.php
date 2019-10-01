@@ -88,6 +88,9 @@ function isExtant($bookId)
 function barcode($str)
 {
     $barcode = new DNS1D();
+    if(! is_dir(public_path().'/img/barcode')) {
+        File::makeDirectory(public_path().'/img/barcode/');
+    }
     return $barcode->getBarcodePNGPath($str, "C39E",3,33,array(69,78,89));
 }
 
