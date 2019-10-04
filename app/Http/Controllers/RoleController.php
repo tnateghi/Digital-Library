@@ -39,11 +39,9 @@ class RoleController extends Controller
         $this->validate($request , [
             'name' => 'required',
             'permission_id' => 'required',
-            'label' => 'required'
         ], [
             'name.required' => 'لطفا نام مقام را وارد کنید',
             'permission_id.required' => 'لطفا دسترسی های مقام را انتخاب کنید',
-            'label.required' => 'لطفا توضیحات مقام را وارد کنید'
         ]);
 
         $role = Role::create([
@@ -89,7 +87,6 @@ class RoleController extends Controller
         $this->validate($request , [
             'permission_id' => 'required',
             'name' => 'required',
-            'label' => 'required'
         ]);
 
         $role->update([

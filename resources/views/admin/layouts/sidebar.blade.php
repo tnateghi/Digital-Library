@@ -121,7 +121,7 @@
                     @endcannot
 
                     @can('roles-admin')
-                        <li {{ active_menu(['roles.create', 'roles.index', 'level.index', 'level.create']) }}>
+                        <li {{ active_menu(['roles.create', 'roles.index']) }}>
                             <a href="#" title="مدیریت مقام ها" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-star-half-o sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">مدیریت مقام ها</span></a>
                             <ul>
 
@@ -132,18 +132,6 @@
                                     <a {{ href('roles.create') }}>افزودن مقام جدید</a>
                                 </li>
 
-                                <li {{ active_menu(['level.index', 'level.create']) }}>
-                                    <a href="#" class="sidebar-nav-submenu"><span class="sidebar-nav-ripple" style="height: 201px; width: 201px; top: -85.5px; left: 27.5px;"></span><i class="fa fa-chevron-right sidebar-nav-indicator"></i>مدیریت کاربران مدیر</a>
-                                    <ul>
-                                        <li>
-                                            <a {{ href('level.index') }}>لیست کاربران مدیر</a>
-                                        </li>
-                                        <li>
-                                            <a {{ href('level.create') }}>افزودن مدیر جدید</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
                             </ul>
                         </li>
                     @endcan

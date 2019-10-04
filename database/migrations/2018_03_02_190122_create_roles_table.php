@@ -17,7 +17,6 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('label')->nullable();
             $table->timestamps();
         });
 
@@ -71,7 +70,6 @@ class CreateRolesTable extends Migration
 
         $manager = DB::table('roles')->insertGetId([
             'name' => 'manager',
-            'label' => 'مدیر کل سایت',
             'created_at' => Carbon\Carbon::now(),
         ]);
 
