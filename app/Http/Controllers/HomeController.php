@@ -21,7 +21,7 @@ class HomeController extends Controller
         return view('article.show', compact('article', 'comments', 'img'));
     }
 
-    public function listAll()
+    public function index()
     {
         $articles = Article::where('state', 'publish')->latest()->paginate(10);
         $articlesChunk = $articles->chunk(2);
@@ -57,11 +57,6 @@ class HomeController extends Controller
         $articles = Article::latest()->take(7)->get();
         $comments = Comment::latest()->take(3)->get();
         return view('admin.dashboard', compact('articles', 'lendDays', 'lendCount', 'comments'));
-    }
-
-    public function test()
-    {
-        return view('admin.test');
     }
 
     public function settings()
@@ -176,6 +171,7 @@ class HomeController extends Controller
                 $results [$i]['category'] = $book->category->name;
                 $results [$i]['bookmaker'] = $book->bookmaker;
                 $results [$i]['ed_year'] = $book->ed_year;
+                
                 if(isExtant($book->id)) {
                     $results [$i]['status'] = true;
                 }
@@ -184,7 +180,7 @@ class HomeController extends Controller
                 }
                 $i++;
             }
-            return Response::json($results,200,[], JSON_UNESCAPED_UNICODE);
+            return response()->json($results);
         }
 
         return view('admin.book.search');

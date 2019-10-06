@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@listAll');
+Route::get('/', 'HomeController@index');
 Route::get('faq', 'HomeController@faq')->name('faq');
 //Route::get('contact', 'HomeController@contact')->name('contact');
 

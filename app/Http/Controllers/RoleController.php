@@ -15,7 +15,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::latest()->paginate(25);
-        return view('admin.roles.all' ,  compact('roles'));
+        return view('admin.roles.index' ,  compact('roles'));
     }
 
     /**

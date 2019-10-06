@@ -14,7 +14,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->paginate(10);
         return view('admin.article.index', compact('articles'));
     }
 
@@ -30,11 +30,6 @@ class ArticleController extends Controller
 
         session()->flash('message' , 'دیدگاه با موفقیت حذف شد.');
         return back();
-    }
-
-    public function commentConfirm(Comment $comment)
-    {
-
     }
 
     public function create()

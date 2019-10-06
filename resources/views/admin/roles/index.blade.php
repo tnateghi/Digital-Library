@@ -21,12 +21,15 @@
     </div>
     <!-- END Blank Header -->
 
-    <div class="col-lg-12">
+    @if($roles->isEmpty())
+        <div class="block full">
+            <!-- Get Started Content -->
+            لیست مقام ها خالی است.
+            <!-- END Get Started Content -->
+        </div>
+    @else
 
-        @if(count($roles))
-
-            <!-- Form Validation Content -->
-
+        <div class="col-lg-12">
             <!-- Row Styles Block -->
             <div class="block">
 
@@ -58,17 +61,11 @@
 
                 </div>
                 <!-- END Row Styles Content -->
-            </div>			<!-- END Row Styles Block -->
+            </div>			
+            <!-- END Row Styles Block -->
 
-            <!-- END Form Validation Content -->
-        @else
-            <div class="block full">
-                <!-- Get Started Content -->
-                لیست مقام ها خالی می باشد!
-                <!-- END Get Started Content -->
-            </div>
-        @endif
-
-        @include('admin.layouts.messages')
-    </div>
+            @include('admin.layouts.messages')
+        </div>
+        
+    @endif
 @endsection
