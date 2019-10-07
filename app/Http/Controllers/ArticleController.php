@@ -28,7 +28,7 @@ class ArticleController extends Controller
     {
         $comment->delete();
 
-        session()->flash('message' , 'دیدگاه با موفقیت حذف شد.');
+        session()->flash('message', 'دیدگاه با موفقیت حذف شد.');
         return back();
     }
 
@@ -48,7 +48,7 @@ class ArticleController extends Controller
             'state' => request('state'),
         ]);
 
-        session()->flash('message' , 'نوشته با موفقیت ایجاد شد.');
+        session()->flash('message', 'نوشته با موفقیت ایجاد شد.');
         return back();
     }
 
@@ -62,7 +62,7 @@ class ArticleController extends Controller
             'state' => request('state'),
         ]);
 
-        session()->flash('message' , 'نوشته با موفقیت بروزرسانی شد.');
+        session()->flash('message', 'نوشته با موفقیت بروزرسانی شد.');
         return redirect(route('articles.edit', ['article' => $article->slug]));
     }
 
@@ -70,7 +70,7 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        session()->flash('message' , 'نوشته با موفقیت حذف شد.');
+        session()->flash('message', 'نوشته با موفقیت حذف شد.');
         return back();
     }
 
@@ -85,7 +85,7 @@ class ArticleController extends Controller
             'title' => 'required',
             'body' => 'required',
             'state' => 'required',
-        ],[
+        ], [
             'title.required' => 'لطفا عنوان نوشته را وارد کنید',
             'body.required' => 'لطفا متن نوشته را وارد کنید',
             'state.required' => 'لطفا حالت نوشته را انتخاب کنید',

@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function confirm(User $user)
     {
-        if($user->level != 'new') {
+        if ($user->level != 'new') {
             abort(404);
         }
 
@@ -62,8 +62,8 @@ class UserController extends Controller
             'file' => 'file|image|mimes:jpeg|max:500',
             'first-name' => 'required',
             'last-name' => 'required',
-            'email' => 'nullable|Email|unique:users,email,'.$user->id,
-            'national-code' => 'required|unique:users,username,'.$user->id,
+            'email' => 'nullable|Email|unique:users,email,' . $user->id,
+            'national-code' => 'required|unique:users,username,' . $user->id,
             'tel' => 'required',
             'address' => 'required',
 
@@ -85,40 +85,39 @@ class UserController extends Controller
 
         ]);
 
-        if(request('file')) {
-            if($user->image == 'default.jpg') {
+        if (request('file')) {
+            if ($user->image == 'default.jpg') {
                 do {
-                    $randomString = str_random(20).'.jpg';
+                    $randomString = str_random(20) . '.jpg';
                     $user_image = User::where('image', $randomString)->get();
 
-                }while(!$user_image->isEmpty());
+                } while (!$user_image->isEmpty());
 
                 $user->update([
                     'image' => $randomString,
                 ]);
 
                 Input::file('file')
-                    ->move(public_path('user-img'),$randomString);
+                    ->move(public_path('user-img'), $randomString);
 
             } else {
                 $randomString = $user->image;
 
                 Input::file('file')
-                    ->move(public_path('user-img'),$randomString);
+                    ->move(public_path('user-img'), $randomString);
             }
         }
 
-        if($user->level != 'creator' && Gate::allows('roles-admin') ) {
+        if ($user->level != 'creator' && Gate::allows('roles-admin')) {
             $this->validate(request(), [
                 'role_id' => 'exists:roles,id',
-            ],[
+            ], [
                 'role_id.exists' => 'آیدی مقام در پایگاه داده یافت نشد',
             ]);
 
-            if(request('role_id')) {
+            if (request('role_id')) {
                 $user->level = 'admin';
-            }
-            else {
+            } else {
                 $user->level = 'user';
             }
 
@@ -132,7 +131,7 @@ class UserController extends Controller
             'address' => request('address'),
         ]);
 
-        session()->flash('message' , 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
+        session()->flash('message', 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
 
         return back();
 
@@ -140,16 +139,16 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if($user->level == 'creator') {
+        if ($user->level == 'creator') {
             abort(404);
         }
 
-        if($user->level == 'admin' && auth()->user()->level == 'admin') {
+        if ($user->level == 'admin' && auth()->user()->level == 'admin') {
             abort(404);
         }
 
-        if($user->image != 'default.jpg') {
-            File::delete(public_path('user-img/'.$user->image));
+        if ($user->image != 'default.jpg') {
+            File::delete(public_path('user-img/' . $user->image));
         }
 
         $user->delete();
@@ -197,18 +196,17 @@ class UserController extends Controller
             'level' => 'user',
         ]);
 
-        session()->flash('message' , 'کاربر با موفقیت اضافه شد');
+        session()->flash('message', 'کاربر با موفقیت اضافه شد');
 
         return back();
     }
 
     public function search()
     {
-        if(! request('search')) {
+        if (!request('search')) {
             $usersChunk = [];
             return view('admin.user.search', compact('usersChunk'));
-        }
-        else {
+        } else {
             $users = User::search(request('search'))->get();
             $usersChunk = $users->chunk(1);
             return view('admin.user.search', compact('usersChunk'));

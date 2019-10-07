@@ -34,10 +34,10 @@ class HomeController extends Controller
         return view('article.faq');
     }
 
-   /* public function contact()
-    {
-        return view('article.contact');
-    }*/
+    /* public function contact()
+     {
+         return view('article.contact');
+     }*/
 
     /**
      * Show the application dashboard.
@@ -49,9 +49,9 @@ class HomeController extends Controller
         $lendDays = array();
         $lendCount = array();
 
-        for ($i = 0;$i < 7;$i++) {
-            $lendDays[$i] = jDate::forge('now - '.$i.' days')->format('l');
-            $lendCount[$i] = Lend::whereDate('created_at', '=', Carbon::parse('today - '.$i.' days')->toDateString())->get()->count();
+        for ($i = 0; $i < 7; $i++) {
+            $lendDays[$i] = jDate::forge('now - ' . $i . ' days')->format('l');
+            $lendCount[$i] = Lend::whereDate('created_at', '=', Carbon::parse('today - ' . $i . ' days')->toDateString())->get()->count();
         }
 
         $articles = Article::latest()->take(7)->get();
@@ -71,11 +71,11 @@ class HomeController extends Controller
 
     public function settingsStore()
     {
-        $this->validate(request(),[
-           'user-active-period' => 'required',
-           'lend-period' => 'required',
-           'max-active-lend' => 'required',
-           'max-extend-count' => 'required',
+        $this->validate(request(), [
+            'user-active-period' => 'required',
+            'lend-period' => 'required',
+            'max-active-lend' => 'required',
+            'max-extend-count' => 'required',
         ], [
             'user-active-period.required' => 'لطفا دوره تمدید کاربر را وارد کنید',
             'lend-period.required' => 'لطفا دوره امانت را وارد کنید',
@@ -107,20 +107,20 @@ class HomeController extends Controller
 
     public function extendMyLend(Lend $lend)
     {
-        if(!$lend){
+        if (!$lend) {
             abort(404);
         }
 
         do {
-            if($lend->user->id != auth()->user()->id){
+            if ($lend->user->id != auth()->user()->id) {
                 abort(404);
             }
 
-            if(lend_expired($lend->created_at)) {
+            if (lend_expired($lend->created_at)) {
                 abort(404);
             }
 
-            if($lend->extend_count >= option('maxExtendCount', 1)) {
+            if ($lend->extend_count >= option('maxExtendCount', 1)) {
                 abort(404);
             }
 
@@ -134,11 +134,11 @@ class HomeController extends Controller
             Lend::create([
                 'book_id' => $book_id,
                 'user_id' => auth()->user()->id,
-                'extend_count' => $extend_count+1,
+                'extend_count' => $extend_count + 1,
             ]);
 
             session()->flash('message', 'عملیات با موفقیت انجام شد');
-        }while(false);
+        } while (false);
 
         return back();
     }
@@ -157,25 +157,24 @@ class HomeController extends Controller
 
     public function bookSearch(Request $request)
     {
-        if($request->ajax()) {
-            if(!request('search')) {
+        if ($request->ajax()) {
+            if (!request('search')) {
                 return [];
             }
             $books = Book::search(request('search'))->orderBy('name')->get();
             $results = [];
             $i = 0;
-            foreach($books as $book) {
+            foreach ($books as $book) {
                 $results [$i]['id'] = $book->id;
                 $results [$i]['name'] = $book->name;
                 $results [$i]['author'] = $book->author;
                 $results [$i]['category'] = $book->category->name;
                 $results [$i]['bookmaker'] = $book->bookmaker;
                 $results [$i]['ed_year'] = $book->ed_year;
-                
-                if(isExtant($book->id)) {
+
+                if (isExtant($book->id)) {
                     $results [$i]['status'] = true;
-                }
-                else {
+                } else {
                     $results [$i]['status'] = false;
                 }
                 $i++;

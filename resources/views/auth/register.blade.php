@@ -112,9 +112,3 @@
     </div>
     <!-- END Modal Terms -->
 @endsection
-
-@section('scripts')
-    <!-- Load and execute javascript code used only in this page -->
-    {{--<script src="js/pages/readyRegister.js"></script>--}}
-    {{--<script>$(function(){ ReadyRegister.init(); });</script>--}}
-@endsection

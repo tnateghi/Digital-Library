@@ -29,7 +29,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        session()->flash('message' , 'کتاب با موفقیت حذف شد.');
+        session()->flash('message', 'کتاب با موفقیت حذف شد.');
         return redirect(route('books.index'));
     }
 
@@ -38,7 +38,7 @@ class BookController extends Controller
         $this->validation();
 
         $book->update([
-           'name' => request('bookName'),
+            'name' => request('bookName'),
             'author' => request('author'),
             'bookmaker' => request('bookmaker'),
             'count' => request('count'),
@@ -47,7 +47,7 @@ class BookController extends Controller
             'category_id' => request('category'),
         ]);
 
-        session()->flash('message' , 'اطلاعات کتاب با موفقیت بروزرسانی شد.');
+        session()->flash('message', 'اطلاعات کتاب با موفقیت بروزرسانی شد.');
 
         return back();
     }
@@ -72,7 +72,7 @@ class BookController extends Controller
             'category_id' => request('category'),
         ]);
 
-        session()->flash('message' , 'کتاب با موفقیت اضافه شد');
+        session()->flash('message', 'کتاب با موفقیت اضافه شد');
 
         return back();
     }

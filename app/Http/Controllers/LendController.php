@@ -37,23 +37,23 @@ class LendController extends Controller
         $bookId = request('bookId');
 
         //if user already has lend this book can not lend again
-        if (! (Lend::where('user_id', $user->id)->where('book_id', $bookId)->where('state', 'lend')->get()->isEmpty()) ) {
-            session()->flash('error' , 'کتاب وارد شده از قبل در لیست امانت های جاری کاربر موجود است');
+        if (!(Lend::where('user_id', $user->id)->where('book_id', $bookId)->where('state', 'lend')->get()->isEmpty())) {
+            session()->flash('error', 'کتاب وارد شده از قبل در لیست امانت های جاری کاربر موجود است');
             return back()
                 ->withInput();
         }
 
         //if user has 3 active lends can not lend other book (limits 3)
-        if(Lend::where('user_id', $user->id)->where('state', 'lend')->count() >= 3) {
-            session()->flash('error' , 'تعداد امانت های کاربر به پایان رسیده است');
+        if (Lend::where('user_id', $user->id)->where('state', 'lend')->count() >= 3) {
+            session()->flash('error', 'تعداد امانت های کاربر به پایان رسیده است');
             return back()
                 ->withInput();
         }
 
-        if (! isExtant($bookId)) {
-            session()->flash('error' , 'تعداد امانت های جاری این کتاب با تعداد کتاب برابر است.');
+        if (!isExtant($bookId)) {
+            session()->flash('error', 'تعداد امانت های جاری این کتاب با تعداد کتاب برابر است.');
             return back()
-                 ->withInput();
+                ->withInput();
         }
 
         Lend::create([
@@ -61,7 +61,7 @@ class LendController extends Controller
             'user_id' => $user->id,
         ]);
 
-        session()->flash('message' , 'عملیات با موفقیت انجام شد');
+        session()->flash('message', 'عملیات با موفقیت انجام شد');
 
         return back();
     }
@@ -70,7 +70,7 @@ class LendController extends Controller
     {
         $user = User::where('username', $request->input('username'))->first();
         $levelError = false;
-        if($user) {
+        if ($user) {
             $levelError = ($user->level == 'new' ? true : false);
         }
 
@@ -81,7 +81,7 @@ class LendController extends Controller
             'username.exists' => 'نام کاربری وارد شده موجود نیست',
         ]);
 
-        $validator->after(function ($validator) use($levelError) {
+        $validator->after(function ($validator) use ($levelError) {
             if ($levelError) {
                 $validator->errors()->add('username', 'نام کاربری وارد شده تایید نشده است');
             }
@@ -98,16 +98,16 @@ class LendController extends Controller
 
     public function extendLend(Lend $lend)
     {
-        if(!$lend){
+        if (!$lend) {
             abort(404);
         }
 
         do {
-            if(lend_expired($lend->created_at)) {
+            if (lend_expired($lend->created_at)) {
                 abort(404);
             }
 
-            if($lend->extend_count >= option('maxExtendCount', 1)) {
+            if ($lend->extend_count >= option('maxExtendCount', 1)) {
                 abort(404);
             }
 
@@ -122,18 +122,18 @@ class LendController extends Controller
             Lend::create([
                 'book_id' => $book_id,
                 'user_id' => $user_id,
-                'extend_count' => $extend_count+1,
+                'extend_count' => $extend_count + 1,
             ]);
 
             session()->flash('message', 'عملیات با موفقیت انجام شد');
-        }while(false);
+        } while (false);
 
         return redirect(route('users.activeLends', ['user' => $user_id]));
     }
 
     public function returnLend(Lend $lend)
     {
-        if($lend->state != 'lend') {
+        if ($lend->state != 'lend') {
             abort(404);
         }
 
@@ -142,14 +142,14 @@ class LendController extends Controller
 
         $length = $end->diffInDays($created);
 
-        if($length > option('lendPeriod', 14)) {
+        if ($length > option('lendPeriod', 14)) {
             $delay = $length - option('lendPeriod', 14);
         } else {
             $delay = 0;
         }
 
         $lend->update([
-           'state' => 'return',
+            'state' => 'return',
             'delay' => $delay
         ]);
 

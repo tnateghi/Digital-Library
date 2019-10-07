@@ -9,8 +9,8 @@ class CommentController extends Controller
     public function store(Article $article)
     {
         $this->validate(request(), [
-           'body' => 'required',
-        ],[
+            'body' => 'required',
+        ], [
             'body.required' => 'متن دیدگاه نمیتواند خالی باشد',
         ]);
 

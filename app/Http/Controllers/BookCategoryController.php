@@ -22,20 +22,20 @@ class BookCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|unique:book_categories,name',
+            'name' => 'required|unique:book_categories,name',
         ], [
             'name.required' => 'لطفا نام دسته بندی را وارد کنید',
             'name.unique' => 'دسته بندی وارد شده از قبل وجود دارد',
         ]);
 
         BookCategory::create([
-           'name' => $request->input('name'),
+            'name' => $request->input('name'),
         ]);
 
         session()->flash('message', 'عملیات با موفقیت انجام شد');
@@ -56,7 +56,7 @@ class BookCategoryController extends Controller
         ]);
 
         Book::where('category_id', $request->input('delete-category'))->update([
-           'category_id' => $request->input('replace-category'),
+            'category_id' => $request->input('replace-category'),
         ]);
 
         BookCategory::find($request->input('delete-category'))->delete();
@@ -78,7 +78,7 @@ class BookCategoryController extends Controller
         ]);
 
         BookCategory::find($request->input('update-category'))->update([
-           'name' => $request->input('update-category-name'),
+            'name' => $request->input('update-category-name'),
         ]);
 
         session()->flash('message', 'عملیات با موفقیت انجام شد');

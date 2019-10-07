@@ -42,7 +42,9 @@
                                 <div class="timeline-time">{{ jDate::forge($comment->created_at)->ago() }}</div>
                                 <img class="img-thumbnail-transparent timeline-icon" src="{{ $comment->user->getImage }}" />
                                 <div class="timeline-content">
-                                    <p class="push-bit small"><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></p>
+                                    <p class="push-bit small">
+                                        <a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a>
+                                    </p>
                                     <p>{{ $comment->body }}</p>
                                 </div>
                             </li>
