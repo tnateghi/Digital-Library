@@ -1,10 +1,13 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'ویرایش کتاب'])
 
 @section('content')
 
     <!-- Form Validation Content -->
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+            @include('admin.layouts.errors')
+            @include('admin.layouts.messages')
 
             <!-- Form Validation Block -->
             <div class="block">
@@ -83,12 +86,16 @@
                 <!-- END Form Validation Form -->
 
             </div>
-        <!-- END Form Validation Block -->
-            @include('admin.layouts.errors')
-            @include('admin.layouts.messages')
+            <!-- END Form Validation Block -->
+
 
         </div>
     </div>
     <!-- END Form Validation Content -->
 
+@endsection
+
+@section('scripts')
+    <script src="/js/pages/bookCreate.js"></script>
+    <script>$(function(){ FormsValidation.init(); });</script>
 @endsection

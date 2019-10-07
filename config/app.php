@@ -164,7 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Morilog\Jalali\JalaliServiceProvider::class,
-		Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
 
         /*

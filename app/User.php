@@ -48,11 +48,11 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
-        if(is_string($role)) {
+        if (is_string($role)) {
             return $this->roles->contains('name', $role);
         }
 
-        return !! $role->intersect($this->roles)->count();
+        return $role->intersect($this->roles)->count();
     }
 
     public function getFullNameAttribute()
@@ -69,15 +69,15 @@ class User extends Authenticatable
     {
         $value = $this->image;
 
-        if($value != 'default.jpg') {
-            return asset('user-img/'.$value);
+        if ($value != 'default.jpg') {
+            return asset('user-img/' . $value);
         }
 
-        if(Gravatar::exists($this->email)) {
+        if (Gravatar::exists($this->email)) {
             return Gravatar::get($this->email);
         }
 
-        return asset('img/placeholders/avatars/'.$value);
+        return asset('img/placeholders/avatars/' . $value);
     }
 
     public function isAdmin()
@@ -85,7 +85,7 @@ class User extends Authenticatable
         return $this->level == 'admin' || $this->level == 'creator' ? true : false;
     }
 
-    public function scopeSearch($query , $keyword)
+    public function scopeSearch($query, $keyword)
     {
 
         $query->WhereRaw("concat(firstName, ' ', lastName) like '%{$keyword}%' ");

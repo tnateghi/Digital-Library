@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'افزودن نوشته جدید'])
 
 @section('content')
     <!-- Page Header -->
@@ -20,6 +20,9 @@
         </div>
     </div>
     <!-- END Page Header -->
+
+    @include('admin.layouts.errors')
+    @include('admin.layouts.messages')
 
     <!-- Form Validation Content -->
     <div class="row">
@@ -52,14 +55,15 @@
                     </fieldset>
                     <div class="form-group form-actions">
                         <div class="col-xs-12">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-xs-4">
                                 <select name="state" class="form-control">
                                     <option value="publish" selected>انتشار</option>
                                     <option value="draft">پیش نویس</option>
                                 </select>
                             </div>
-                            <input type="hidden" name="submit">
-                            <button type="submit" class="btn btn-effect-ripple btn-primary" style="overflow: hidden; position: relative;">ذخیره</button>
+                            <div class="col-xs-6">
+                                <button type="submit" class="btn btn-effect-ripple btn-primary" style="overflow: hidden; position: relative;">ذخیره</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -67,8 +71,6 @@
         </div>
     </div>
     <!-- END Form Validation Content -->
-    @include('admin.layouts.errors')
-    @include('admin.layouts.messages')
 
 @endsection
 

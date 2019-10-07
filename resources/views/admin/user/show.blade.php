@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'اطلاعات کاربر'])
 
 @section('content')
 
@@ -70,7 +70,34 @@
                             <p class="form-control-static">{{ $user->address }}</p>
                         </div>
                     </div>
-
+                    @can('roles-admin')
+                        <div class="form-group">
+                            <label class="col-md-4 col-md-offset-1">نقش : </label>
+                            <div class="col-md-7">
+                                <p class="form-control-static">
+                                    @if($user->level == 'creator')
+                                        سازنده سایت
+                                    @elseif($user->level == 'admin')
+                                        مدیر
+                                    @else
+                                        کاربر
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                        @if($user->level == 'admin')
+                            <div class="form-group">
+                                <label class="col-md-4 col-md-offset-1">مقام ها : </label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">
+                                        @foreach($user->roles as $role)
+                                            <span class="label label-default">{{ $role->name }}</span>
+                                        @endforeach
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
+                    @endcan
                     <div class="form-group form-actions">
                         <div class="col-md-12 col-md-offset-1">
                             @can('lends-admin')
@@ -78,8 +105,7 @@
                                 <a href="{{ route('users.lendsHistory', ['user' => $user->id]) }}"><button type="button" class="btn btn-effect-ripple btn-info" style="overflow: hidden; position: relative;">سابقه امانت</button></a>
                             @endcan
 
-                            <a href="{{ route('users.edit', ['user' => $user->id]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;">ویرایش</button></a>
-                            <a href="{{ route('users.editImage', ['user' => $user->id]) }}"><button type="button" class="btn btn-effect-ripple btn-warning" style="overflow: hidden; position: relative;">ویرایش تصویر</button></a>
+                            <a href="{{ route('users.edit', ['user' => $user->id]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-edit"></i> ویرایش</button></a>
 
                             @if(can_delete_user($user->id))
                                     <a href="#modal-fade" data-toggle="modal" title="حذف"><button type="button" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative;"><i class="fa fa-trash-o"></i> حذف کاربر</button></a>

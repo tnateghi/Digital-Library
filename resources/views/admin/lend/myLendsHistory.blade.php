@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'سابقه امانت های من'])
 
 @section('content')
     <!-- Page Header -->

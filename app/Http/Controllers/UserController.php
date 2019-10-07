@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
@@ -30,7 +32,7 @@ class UserController extends Controller
 
     public function confirm(User $user)
     {
-        if($user->level != 'new') {
+        if ($user->level != 'new') {
             abort(404);
         }
 
@@ -50,12 +52,77 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function update(User $user)
     {
-        $this->validation(true);
+        $this->validate(request(), [
+            'file' => 'file|image|mimes:jpeg|max:500',
+            'first-name' => 'required',
+            'last-name' => 'required',
+            'email' => 'nullable|Email|unique:users,email,' . $user->id,
+            'national-code' => 'required|unique:users,username,' . $user->id,
+            'tel' => 'required',
+            'address' => 'required',
+
+        ], [
+            'file.required' => 'لطفا فایل تصویر را انتخاب کنید',
+            'file.file' => 'لطفا فایلی را برای ارسال انتخاب کنید',
+            'file.image' => 'لطفا یک فایل عکس انتخاب کنید',
+            'file.mimes' => 'لطفا عکس با فرمت jpeg ارسال کنید',
+            'file.max' => 'اندازه ی فایل ارسالی نباید بیشتر از 500 کیلوبایت باشد',
+
+            'first-name.required' => 'لطفا نام کاربر را وارد کنید',
+            'last-name.required' => 'لطفا نام خانوادگی کاربر را وارد کنید',
+            'email.email' => 'لطفا ایمیل کاربر را به درستی وارد کنید',
+            'email.unique' => 'ایمیل وارد شده از قبل در سیستم موجود است',
+            'national-code.required' => 'لطفا کد ملی کاربر را وارد کنید',
+            'national-code.unique' => 'کد ملی وارد شده از قبل در سیستم موجود است',
+            'tel.required' => 'لطفا شماره تلفن کاربر را وارد کنید',
+            'address.required' => 'لطفا آدرس کاربر را وارد کنید',
+
+        ]);
+
+        if (request('file')) {
+            if ($user->image == 'default.jpg') {
+                do {
+                    $randomString = str_random(20) . '.jpg';
+                    $user_image = User::where('image', $randomString)->get();
+
+                } while (!$user_image->isEmpty());
+
+                $user->update([
+                    'image' => $randomString,
+                ]);
+
+                Input::file('file')
+                    ->move(public_path('user-img'), $randomString);
+
+            } else {
+                $randomString = $user->image;
+
+                Input::file('file')
+                    ->move(public_path('user-img'), $randomString);
+            }
+        }
+
+        if ($user->level != 'creator' && Gate::allows('roles-admin')) {
+            $this->validate(request(), [
+                'role_id' => 'exists:roles,id',
+            ], [
+                'role_id.exists' => 'آیدی مقام در پایگاه داده یافت نشد',
+            ]);
+
+            if (request('role_id')) {
+                $user->level = 'admin';
+            } else {
+                $user->level = 'user';
+            }
+
+            $user->roles()->sync(request()->input('role_id'));
+        }
 
         $user->update([
             'firstName' => request('first-name'),
@@ -64,7 +131,7 @@ class UserController extends Controller
             'address' => request('address'),
         ]);
 
-        session()->flash('message' , 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
+        session()->flash('message', 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
 
         return back();
 
@@ -72,16 +139,16 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if($user->level == 'creator') {
+        if ($user->level == 'creator') {
             abort(404);
         }
 
-        if($user->level == 'admin' && auth()->user()->level == 'admin') {
+        if ($user->level == 'admin' && auth()->user()->level == 'admin') {
             abort(404);
         }
 
-        if($user->image != 'default.jpg') {
-            File::delete(public_path('user-img/'.$user->image));
+        if ($user->image != 'default.jpg') {
+            File::delete(public_path('user-img/' . $user->image));
         }
 
         $user->delete();
@@ -91,55 +158,6 @@ class UserController extends Controller
         return redirect(route('users.index'));
     }
 
-    public function editImage(User $user)
-    {
-        return view('admin.user.editImage', compact('user'));
-    }
-
-    public function updateImage(User $user)
-    {
-        $this->validate(request(), [
-           'file' => 'required|file|image|mimes:jpeg|max:500',
-        ], [
-            'file.required' => 'لطفا فایل تصویر را انتخاب کنید',
-            'file.file' => 'لطفا فایلی را برای ارسال انتخاب کنید',
-            'file.image' => 'لطفا یک فایل عکس انتخاب کنید',
-            'file.mimes' => 'لطفا عکس با فرمت jpeg ارسال کنید',
-            'file.max' => 'اندازه ی فایل ارسالی نباید بیشتر از 500 کیلوبایت باشد',
-        ]);
-
-
-        if($user->image == 'default.jpg') {
-            do {
-                $randomString = str_random(20).'.jpg';
-                $user_image = User::where('image', $randomString)->get();
-
-            }while(!$user_image->isEmpty());
-
-            $user->update([
-                'image' => $randomString,
-            ]);
-
-            Input::file('file')
-                ->move(public_path('user-img'),$randomString);
-
-        } else {
-            $randomString = $user->image;
-
-            Input::file('file')
-                ->move(public_path('user-img'),$randomString);
-        }
-
-
-
-        if($user->image == 'default.jpg') {
-
-        }
-
-        session()->flash('message' , 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
-        return back();
-    }
-
     public function show(User $user)
     {
         return view('admin.user.show', compact('user'));
@@ -147,7 +165,25 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $this->validation();
+        $this->validate(request(), [
+            'first-name' => 'required',
+            'last-name' => 'required',
+            'email' => 'nullable|Email|unique:users',
+            'national-code' => 'required|unique:users,username',
+            'tel' => 'required',
+            'address' => 'required',
+
+        ], [
+            'first-name.required' => 'لطفا نام کاربر را وارد کنید',
+            'last-name.required' => 'لطفا نام خانوادگی کاربر را وارد کنید',
+            'email.email' => 'لطفا ایمیل کاربر را به درستی وارد کنید',
+            'email.unique' => 'ایمیل وارد شده از قبل در سیستم موجود است',
+            'national-code.required' => 'لطفا کد ملی کاربر را وارد کنید',
+            'national-code.unique' => 'کد ملی وارد شده از قبل در سیستم موجود است',
+
+            'tel.required' => 'لطفا شماره تلفن کاربر را وارد کنید',
+            'address.required' => 'لطفا آدرس کاربر را وارد کنید',
+        ]);
 
         User::create([
             'username' => request('national-code'),
@@ -160,64 +196,17 @@ class UserController extends Controller
             'level' => 'user',
         ]);
 
-        session()->flash('message' , 'کاربر با موفقیت اضافه شد');
+        session()->flash('message', 'کاربر با موفقیت اضافه شد');
 
         return back();
     }
 
-    /**
-     * @param bool $update
-     * if update is true email and username field is not required
-     * and user can not edit this fields
-     */
-    private function validation($update = false)
-    {
-
-        if($update) {
-            $this->validate(request(), [
-                'first-name' => 'required',
-                'last-name' => 'required',
-                'tel' => 'required',
-                'address' => 'required',
-
-            ], [
-                'first-name.required' => 'لطفا نام کاربر را وارد کنید',
-                'last-name.required' => 'لطفا نام خانوادگی کاربر را وارد کنید',
-                'email.email' => 'لطفا ایمیل کاربر را به درستی وارد کنید',
-                'national-code.required' => 'لطفا کد ملی کاربر را وارد کنید',
-                'tel.required' => 'لطفا شماره تلفن کاربر را وارد کنید',
-                'address.required' => 'لطفا آدرس کاربر را وارد کنید',
-            ]);
-        } else {
-            $this->validate(request(), [
-                'first-name' => 'required',
-                'last-name' => 'required',
-                'email' => 'nullable|Email|unique:users',
-                'national-code' => 'required|unique:users,username',
-                'tel' => 'required',
-                'address' => 'required',
-
-            ], [
-                'first-name.required' => 'لطفا نام کاربر را وارد کنید',
-                'last-name.required' => 'لطفا نام خانوادگی کاربر را وارد کنید',
-                'email.email' => 'لطفا ایمیل کاربر را به درستی وارد کنید',
-                'email.unique' => 'ایمیل وارد شده از قبل در سیستم موجود است',
-                'national-code.required' => 'لطفا کد ملی کاربر را وارد کنید',
-                'national-code.unique' => 'کد ملی وارد شده از قبل در سیستم موجود است',
-                'tel.required' => 'لطفا شماره تلفن کاربر را وارد کنید',
-                'address.required' => 'لطفا آدرس کاربر را وارد کنید',
-            ]);
-        }
-
-    }
-
     public function search()
     {
-        if(! request('search')) {
+        if (!request('search')) {
             $usersChunk = [];
             return view('admin.user.search', compact('usersChunk'));
-        }
-        else {
+        } else {
             $users = User::search(request('search'))->get();
             $usersChunk = $users->chunk(1);
             return view('admin.user.search', compact('usersChunk'));

@@ -1,7 +1,7 @@
 /*
  *  Document   : bookCreate.js
  *  Author     : nateghi
- *  Description: Custom javascript code used in book create and edit page
+ *  Description: Custom javascript code used in user create page
  */
 
 var FormsValidation = function() {
@@ -29,37 +29,46 @@ var FormsValidation = function() {
                     e.closest('.help-block').remove();
                 },
                 rules: {
-                    'bookName': {
+                    'first-name': {
                         required: true
                     },
-					'author': {
-                        required: true,
-                    },
-                    'bookmaker': {
+					'last-name': {
                         required: true
+                    },
+                    'email': {
+                        email: true
                     },
 
-					'category': {
-                        required: true
+					'national-code': {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
                     },
-					'ed_year': {
+					'tel': {
                         required: true,
                         number: true
                     },
-                    'count': {
-                        required: true,
-                        min: 1
+                    'address': {
+                        required: true
                     }
                 },
                 messages: {
 
-					'author': 'لطفا نام نویسنده را وارد کنید',
-					'category-name': 'لطفا نام دسته بندی را وارد کنید',
-					'bookName': 'لطفا نام کتاب را وارد کنید',
-					'category': 'لطفا یک دسته انتخاب کنید',
-					'bookmaker': 'لطفا ناشر کتاب را وارد کنید',
-					'ed_year': 'لطفا سال چاپ را به عدد وارد کنید',
-                    'count': 'لطفا عددی بزرگتر از 1 وارد کنید',
+					'first-name': 'لطفا نام کاربر را وارد کنید',
+					'last-name': 'لطفا نام خانوادگی کاربر را وارد کنید',
+					'email':  'لطفا یک ایمیل معتبر وارد کنید',
+					'national-code': {
+                        required: 'لطفا کد ملی کاربر را وارد کنید',
+                        number: 'لطفا کد ملی معتبر وارد کنید',
+                        minlength: 'لطفا کد ملی معتبر وارد کنید',
+                        maxlength: 'لطفا کد ملی معتبر وارد کنید',
+                    },
+					'tel': {
+					    required: 'لطفا شماره تلفن کاربر را وارد کنید',
+					    number: 'لطفا یک تلفن معتبر وارد کنید',
+                    },
+                    'address': 'لطفا آدرس کاربر را وارد کنید',
                 }
             });
 

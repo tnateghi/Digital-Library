@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'ویرایش کاربر'])
 
 @section('content')
 
@@ -18,9 +18,32 @@
                 <!-- END Form Validation Title -->
 
                 <!-- Form Validation Form -->
-                <form action="{{ route('users.update', ['user' => $user->id]) }}" id="form-validation" method="post" class="form-horizontal form-bordered">
+                <form action="{{ route('users.update', ['user' => $user->id]) }}" id="form-validation" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                     {!! csrf_field() !!}
                     {{ method_field('PATCH') }}
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">تصویر فعلی : </label>
+                        <div class="col-md-8">
+                            <div class="widget">
+                                <img src="{{ $user->getImage }}" style="border-radius: 10px;width:100px;height:100px;" alt="avatar" class="img-circle">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="file">تصویر جدید </label>
+                        <div class="col-md-9">
+                            <input type="file" id="file" name="file">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"> </label>
+                        <div class="col-md-9">
+                            <p class="well well-sm"><strong>نکته : </strong><br>تصویر کاربر باید با فرمت jpeg با حجم کمتر از 500 کیلوبایت باشد.<br><small>( بهترین اندازه 128*128 )</small></p>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="val-first-name">نام <span class="text-danger">*</span></label>
@@ -39,14 +62,14 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="val-email">ایمیل </label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="val-email" name="email" value="{{ $user->email }}" disabled="disabled">
+                            <input type="text" class="form-control" id="val-email" name="email" value="{{ $user->email }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="val-national-code">کد ملی <span class="text-danger">*</span></label>
                         <div class="col-md-6">
-                            <input type="text" id="val-national-code" name="national-code" class="form-control" value="{{ $user->username }}" disabled="disabled">
+                            <input type="text" id="val-national-code" name="national-code" class="form-control" value="{{ $user->username }}">
                         </div>
                     </div>
 
@@ -56,6 +79,21 @@
                             <input type="text" id="val-tel" name="tel" class="form-control" value="{{ $user->tel }}">
                         </div>
                     </div>
+
+                    @if($user->level != 'creator')
+                        @can('roles-admin')
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="role_id">مقام ها </label>
+                                <div class="col-md-6">
+                                    <select id="role_id" name="role_id[]" class="select-chosen" data-placeholder="انتخاب کنید.." style="width: 250px;" multiple>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endcan
+                    @endif
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="val-address">آدرس <span class="text-danger">*</span></label>
@@ -78,4 +116,9 @@
     </div>
     <!-- END Form Validation Content -->
 
+@endsection
+
+@section('scripts')
+    <script src="/js/pages/userEdit.js"></script>
+    <script>$(function(){ FormsValidation.init(); });</script>
 @endsection

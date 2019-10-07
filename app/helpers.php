@@ -17,7 +17,7 @@ use Milon\Barcode\DNS1D;
  */
 function option($name, $default_value)
 {
-    if(! in_array($name, ['userActivePeriod', 'lendPeriod', 'maxActiveLend', 'maxExtendCount', 'userRegister'])) {
+    if (!in_array($name, ['userActivePeriod', 'lendPeriod', 'maxActiveLend', 'maxExtendCount', 'userRegister'])) {
         return 'error';
     }
     return $option = \App\Option::where('name', $name)->firstOrCreate(['name' => $name], ['value' => $default_value])->value;
@@ -32,7 +32,7 @@ function option($name, $default_value)
  */
 function option_update($name, $value)
 {
-    if(! in_array($name, ['userActivePeriod', 'lendPeriod', 'maxActiveLend', 'maxExtendCount', 'userRegister'])) {
+    if (!in_array($name, ['userActivePeriod', 'lendPeriod', 'maxActiveLend', 'maxExtendCount', 'userRegister'])) {
         return 'error';
     }
     $option = Option::firstOrNew(array('name' => $name));
@@ -45,13 +45,14 @@ function lend_expired($date)
     return (Carbon::parse($date . '+' . option('lendPeriod', 14) . 'days') < Carbon::now());
 }
 
-function lend_return_date($date) {
-    return (Carbon::parse($date . '+' . option('lendPeriod', 14) . 'days') );
+function lend_return_date($date)
+{
+    return (Carbon::parse($date . '+' . option('lendPeriod', 14) . 'days'));
 }
 
 function href($name)
 {
-    $string = 'href='.route($name);
+    $string = 'href=' . route($name);
     if (Route::currentRouteName() == $name) {
         $string .= ' class=active';
     }
@@ -88,34 +89,37 @@ function isExtant($bookId)
 function barcode($str)
 {
     $barcode = new DNS1D();
-    return $barcode->getBarcodePNGPath($str, "C39E",3,33,array(69,78,89));
+    if (!is_dir(public_path() . '/img/barcode')) {
+        File::makeDirectory(public_path() . '/img/barcode/');
+    }
+    return $barcode->getBarcodePNGPath($str, "C39E", 3, 33, array(69, 78, 89));
 }
 
 function can_delete_user($user_id)
 {
     $user = User::find($user_id);
 
-    if($user->id == auth()->user()->id) {
+    if ($user->id == auth()->user()->id) {
         return false;
     }
 
-    if($user->level == 'creator') {
+    if ($user->level == 'creator') {
         return false;
     }
 
-    if(!in_array(auth()->user()->level, ['admin', 'creator'])) {
+    if (!in_array(auth()->user()->level, ['admin', 'creator'])) {
         return false;
     }
 
-    if(auth()->user()->level == 'creator') {
+    if (auth()->user()->level == 'creator') {
         return true;
     }
 
-    if(Gate::allows('roles-admin')) {
+    if (Gate::allows('roles-admin')) {
         return true;
     }
 
-    if(Gate::allows('users-admin') && in_array($user->level, ['user', 'new'])) {
+    if (Gate::allows('users-admin') && in_array($user->level, ['user', 'new'])) {
         return true;
     }
 

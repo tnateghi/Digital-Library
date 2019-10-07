@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@listAll');
+Route::get('/', 'HomeController@index');
 Route::get('faq', 'HomeController@faq')->name('faq');
 //Route::get('contact', 'HomeController@contact')->name('contact');
 
@@ -38,11 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
     $this->resource('articles', 'ArticleController');
     $this->get('articles/comments/index', 'ArticleController@comments')->name('articles.comments');
     $this->resource('users', 'UserController');
-    $this->resource('level' , 'LevelManageController' , ['parameters' => ['level' => 'user']]);
 
     $this->group(['prefix' => 'users'], function () {
-        $this->get('{user}/edit-image', 'UserController@editImage')->name('users.editImage');
-        $this->post('{user}/edit-image', 'UserController@updateImage')->name('users.updateImage');
         $this->get('new/index', 'UserController@newUsers')->name('users.new');
         $this->get('{user}/confirm', 'UserController@confirm')->name('users.confirm');
     });

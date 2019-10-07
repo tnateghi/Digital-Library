@@ -17,7 +17,6 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('label')->nullable();
             $table->timestamps();
         });
 
@@ -35,7 +34,7 @@ class CreateRolesTable extends Migration
             $table->integer('permission_id')->unsigned();
             $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
 
-            $table->primary(['role_id' , 'permission_id']);
+            $table->primary(['role_id', 'permission_id']);
         });
 
         Schema::create('role_user', function (Blueprint $table) {
@@ -45,7 +44,7 @@ class CreateRolesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->primary(['role_id' , 'user_id']);
+            $table->primary(['role_id', 'user_id']);
         });
 
         $permissions = [
@@ -61,8 +60,8 @@ class CreateRolesTable extends Migration
 
         foreach ($permissions as $key => $value) {
             $inserted = DB::table('permissions')->insertGetId([
-               'name' => $key,
-               'label' => $value,
+                'name' => $key,
+                'label' => $value,
                 'created_at' => Carbon\Carbon::now(),
             ]);
 
@@ -71,7 +70,6 @@ class CreateRolesTable extends Migration
 
         $manager = DB::table('roles')->insertGetId([
             'name' => 'manager',
-            'label' => 'مدیر کل سایت',
             'created_at' => Carbon\Carbon::now(),
         ]);
 
@@ -79,10 +77,11 @@ class CreateRolesTable extends Migration
             DB::table('permission_role')->insert([
                 'role_id' => $manager,
                 'permission_id' => $value,
-        ]);
+            ]);
         }
 
     }
+
     /**
      * Reverse the migrations.
      *

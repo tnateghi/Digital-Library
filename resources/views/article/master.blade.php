@@ -4,7 +4,11 @@
     <head>
         <meta charset="utf-8">
 
-        <title>وبلاگ | کتابخانه دیجیتال</title>
+        <title>@isset($title)
+                {{ $title }} |
+            @endisset
+            {{ config('app.name') }}
+        </title>
 
         <meta name="description" content="">
         <meta name="author" content="">

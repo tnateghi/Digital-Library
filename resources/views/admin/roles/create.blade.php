@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'افزودن مقام جدید'])
 
 @section('content')
     <!-- Blank Header -->
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="label">توضیحات مقام <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="label">توضیحات مقام </label>
                         <div class="col-md-6">
                             <input type="text" id="label" name="label" class="form-control" value="{{ old('label') }}" >
                         </div>

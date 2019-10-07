@@ -21,12 +21,14 @@ $("#form-validation").submit(function(e){
             }
             $.each(response, function (i, item) {
                 var status;
+                
                 if(item.status) {
                     status = "<span class='label label-success'>موجود</span>";
                 }
                 else {
                     status = "<span class='label label-danger'>ناموجود</span>";
                 }
+                
                 if(typeof admin !== 'undefined'){
                     var link  = "<a href='/admin/books/book_id'  class='btn btn-effect-ripple btn-xs btn-success' title=\"مشاهده\"><i class='fa fa-eye'></i></a>";
                     link = link.replace('book_id', item.id);

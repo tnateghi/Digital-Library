@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'افزودن کاربر جدید'])
 
 @section('content')
     <!-- Page Header -->
@@ -95,4 +95,9 @@
         </div>
     </div>
     <!-- END Form Validation Content -->
+@endsection
+
+@section('scripts')
+    <script src="/js/pages/userCreate.js"></script>
+    <script>$(function(){ FormsValidation.init(); });</script>
 @endsection

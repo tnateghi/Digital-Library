@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master', ['title' => 'نوشته ها'])
 
 @section('content')
     <!-- Page Header -->
@@ -21,11 +21,11 @@
     </div>
     <!-- END Page Header -->
 
-    @if(! $articles->count())
+    @if($articles->isEmpty())
 
         <div class="block full">
             <!-- Get Started Content -->
-            در حال حاضر هیچ نوشته ای موجود نیست
+            لیست نوشته ها خالی است.
             <!-- END Get Started Content -->
         </div>
 
@@ -96,6 +96,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="text-center">
+                        {!! $articles->render() !!}
+                    </div>
+
                 </div>
                 <!-- END Tickets Block -->
                 @include('admin.layouts.messages')
