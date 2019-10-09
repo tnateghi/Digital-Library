@@ -24,14 +24,6 @@ class ArticleController extends Controller
         return view('admin.article.comments', compact('comments'));
     }
 
-    public function commentDestroy(Comment $comment)
-    {
-        $comment->delete();
-
-        session()->flash('message', 'دیدگاه با موفقیت حذف شد.');
-        return back();
-    }
-
     public function create()
     {
         return view('admin.article.create');
@@ -39,7 +31,6 @@ class ArticleController extends Controller
 
     public function store()
     {
-
         $this->validation();
 
         auth()->user()->articles()->create([
@@ -49,7 +40,7 @@ class ArticleController extends Controller
         ]);
 
         session()->flash('message', 'نوشته با موفقیت ایجاد شد.');
-        return back();
+        return redirect('admin/articles');
     }
 
     public function update(Article $article)
@@ -71,7 +62,7 @@ class ArticleController extends Controller
         $article->delete();
 
         session()->flash('message', 'نوشته با موفقیت حذف شد.');
-        return back();
+        return redirect('admin/articles');
     }
 
     public function edit(Article $article)

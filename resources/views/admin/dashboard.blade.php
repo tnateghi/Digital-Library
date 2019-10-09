@@ -124,7 +124,6 @@
                                         <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
 
                                         @php
-
                                             $string = $comment->body;
                                             $string = strip_tags($string);
                                             if (strlen($string) > 300) {
@@ -136,7 +135,6 @@
                                                 $string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
                                                 $string .= '...';
                                             }
-
                                         @endphp
 
                                         <p>{{ $string }}</p>

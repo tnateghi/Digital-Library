@@ -9,8 +9,7 @@ use App\Lend;
 use Carbon\Carbon;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-use Morilog\Jalali\jDate;
+use Morilog\Jalali\Jalalian;
 
 class HomeController extends Controller
 {
@@ -34,11 +33,6 @@ class HomeController extends Controller
         return view('article.faq');
     }
 
-    /* public function contact()
-     {
-         return view('article.contact');
-     }*/
-
     /**
      * Show the application dashboard.
      *
@@ -50,7 +44,7 @@ class HomeController extends Controller
         $lendCount = array();
 
         for ($i = 0; $i < 7; $i++) {
-            $lendDays[$i] = jDate::forge('now - ' . $i . ' days')->format('l');
+            $lendDays[$i] = Jalalian::forge('now - ' . $i . ' days')->format('l');
             $lendCount[$i] = Lend::whereDate('created_at', '=', Carbon::parse('today - ' . $i . ' days')->toDateString())->get()->count();
         }
 

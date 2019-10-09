@@ -20,21 +20,22 @@
         </div>
     </div>
     <!-- END Blank Header -->
-    <div class="row">
-        <div class="col-lg-12">
 
-            @if(count($books))
-                <!-- Form Validation Content -->
-
-                    <!-- Row Styles Block -->
-                    <div class="block">
-
-
-                        <!-- Row Styles Content -->
-                        <div class="table-responsive">
-
-                            <table class="table table-borderless table-vcenter table-hover">
-                                <thead>
+    @if($books->isEmpty())
+        <div class="block full">
+            <!-- Get Started Content -->
+            لیست کتاب ها خالی است.
+            <!-- END Get Started Content -->
+        </div>
+    @else
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Row Styles Block -->
+                <div class="block">
+                    <!-- Row Styles Content -->
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-vcenter table-hover">
+                            <thead>
                                 <tr>
                                     <th class="text-center" style="width: 50px;">ID</th>
                                     <th>نام کتاب</th>
@@ -44,8 +45,8 @@
                                     <th class="text-center">وضعیت</th>
                                     <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th>
                                 </tr>
-                                </thead>
-                                <tbody>
+                            </thead>
+                            <tbody>
                                 @foreach($books as $book)
                                     <tr>
                                         <td class="text-center">{{ $book->id }}</td>
@@ -54,32 +55,25 @@
                                         <td>{{ $book->bookmaker }}</td>
                                         <td>{{ $book->ed_year }}</td>
 
-                                        @if(isExtant($book->id)) <td class="text-center"><span class="label label-success">موجود</span></td>
-                                        @else <td class="text-center"><span class="label label-danger">ناموجود</span></td> @endif
+                                        @if(isExtant($book->id))
+                                            <td class="text-center"><span class="label label-success">موجود</span></td>
+                                        @else
+                                            <td class="text-center"><span class="label label-danger">ناموجود</span></td>
+                                        @endif
                                         <td class="text-center">
-                                            <a href="{{ route('books.show', ['id' => $book->id]) }}" title="مشاهده" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('books.show', ['book' => $book->id]) }}" title="مشاهده" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
-                                </tbody>
-                            </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END Row Styles Content -->
+                </div>
+                <!-- END Row Styles Block -->
 
-                        </div>
-                        <!-- END Row Styles Content -->
-                    </div>			<!-- END Row Styles Block -->
-
-                <!-- END Form Validation Content -->
-            @else
-
-            <div class="block full">
-                <!-- Get Started Content -->
-                کتابی جهت نمایش وجود ندارد!
-                <!-- END Get Started Content -->
+                @include('admin.layouts.messages')
             </div>
-            @endif
-
-            @include('admin.layouts.messages')
-
         </div>
-    </div>
+    @endif
 @endsection

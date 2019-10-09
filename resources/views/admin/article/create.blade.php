@@ -30,7 +30,6 @@
             <div class="block">
                 <!-- CKEditor Title -->
                 <div class="block-title">
-
                     <h2>افزودن نوشته</h2>
                 </div>
                 <!-- END CKEditor Title -->
@@ -43,7 +42,6 @@
                         <div class="col-md-12">
                             <input type="text" id="title" name="title" class="form-control" placeholder="عنوان نوشته" value="{{ old('title') }}">
                         </div>
-
                     </div>
 
                     <fieldset>
