@@ -4,7 +4,8 @@
     <head>
         <meta charset="utf-8">
 
-        <title>@isset($title)
+        <title>
+            @isset($title)
                 {{ $title }} |
             @endisset
             {{ config('app.name') }}

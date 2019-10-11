@@ -3,7 +3,7 @@
     <div class="container">
         <!-- Site Logo -->
         <a href="/" class="site-logo">
-            <i class="fa fa-cube"></i><strong> وبلاگ کتابخانه دیجیتال</strong>
+            <i class="fa fa-book"></i><strong> وبلاگ {{ config('app.name') }}</strong>
         </a>
         <!-- END Site Logo -->
 

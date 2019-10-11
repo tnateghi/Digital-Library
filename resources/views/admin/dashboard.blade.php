@@ -11,7 +11,7 @@
                         <i class="gi gi-user text-light-op"></i>
                     </div>
                     <h2 class="widget-heading h3 text-info">
-                        <strong><span data-toggle="counter" data-to="{{ \App\User::where('level', '!=', 'new')->get()->count() }}"></span></strong>
+                        <strong><span data-toggle="counter" data-to="{{ $users_count }}"></span></strong>
                     </h2>
                     <span class="text-muted">کاربران</span>
                 </div>
@@ -24,7 +24,7 @@
                         <i class="gi gi-book text-light-op"></i>
                     </div>
                     <h2 class="widget-heading h3 text-success">
-                        <strong><span data-toggle="counter" data-to="{{ \App\Book::all()->count() }}"></span></strong>
+                        <strong><span data-toggle="counter" data-to="{{ $books_count }}"></span></strong>
                     </h2>
                     <span class="text-muted">کتاب ها</span>
                 </div>
@@ -37,7 +37,7 @@
                         <i class="hi hi-log_out text-light-op"></i>
                     </div>
                     <h2 class="widget-heading h3 text-warning">
-                        <strong><span data-toggle="counter" data-to="{{ \App\Lend::where('state', 'lend')->get()->count() }}"></span></strong>
+                        <strong><span data-toggle="counter" data-to="{{ $active_lends_count }}"></span></strong>
                     </h2>
                     <span class="text-muted">امانت های جاری</span>
                 </div>
@@ -50,14 +50,14 @@
                         <i class="gi gi-conversation text-light-op"></i>
                     </div>
                     <h2 class="widget-heading h3 text-danger">
-                        <strong><span data-toggle="counter" data-to="{{ \App\Comment::all()->count() }}"></span></strong>
+                        <strong><span data-toggle="counter" data-to="{{ $comments_count }}"></span></strong>
                     </h2>
                     <span class="text-muted">مجموع نظرات ها</span>
                 </div>
             </a>
         </div>
 
-        @if(count($articles))
+        @if(count($last_articles))
             <div class="col-sm-12 col-lg-6">
                 <!-- Tickets Block -->
                 <div class="block">
@@ -79,7 +79,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($articles as $article)
+                                @foreach($last_articles as $article)
                                     <tr>
                                         <td><a href="{{ route('article.show', ['article' => $article->slug]) }}" target="_blank"><strong>{{ $article->title }}</strong></a></td>
 
@@ -102,7 +102,7 @@
             </div>
         @endif
 
-        @if(count($comments))
+        @if(count($last_comments))
             <div class="col-sm-12 col-lg-6">
                 <!-- latest comments Block -->
                 <div class="block">
@@ -114,13 +114,13 @@
                     </div>
                     <div class="widget-content">
                         <ul class="media-list">
-                            @foreach($comments as $comment)
+                            @foreach($last_comments as $comment)
                                 <li class="media">
                                     <a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan class="pull-left">
                                         <img style="width: 40px;height: 40px;" src="{{ $comment->user->getImage }}" alt="{{ $comment->user->fullName }}" class="img-circle">
                                     </a>
                                     <div class="media-body">
-                                        <span class="text-muted pull-right"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
+                                        <span class="text-muted pull-right"><small><em>{{ \Morilog\Jalali\Jalalian::forge($comment->created_at)->ago() }}</em></small></span>
                                         <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
 
                                         @php

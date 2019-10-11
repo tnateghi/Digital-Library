@@ -55,7 +55,7 @@
             @endforeach
 
             <div class="text-center">
-                {!! $articles->render() !!}
+                {{ $articles->render() }}
             </div>
         </div>
     </section>

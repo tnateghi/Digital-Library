@@ -5,6 +5,7 @@ use App\Book;
 use App\Option;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Milon\Barcode\DNS1D;
@@ -89,9 +90,12 @@ function isExtant($bookId)
 function barcode($str)
 {
     $barcode = new DNS1D();
+
     if (!is_dir(public_path() . '/img/barcode')) {
         File::makeDirectory(public_path() . '/img/barcode/');
     }
+
+    $barcode->setStorPath(public_path() . '/img/barcode/');
     return $barcode->getBarcodePNGPath($str, "C39E", 3, 33, array(69, 78, 89));
 }
 

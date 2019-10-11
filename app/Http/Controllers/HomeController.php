@@ -6,6 +6,7 @@ use App\Article;
 use App\Book;
 use App\Comment;
 use App\Lend;
+use App\User;
 use Carbon\Carbon;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Request;
@@ -40,27 +41,20 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        $lendDays = array();
-        $lendCount = array();
+        $users_count = User::where('level', '!=', 'new')->count();
+        $books_count = Book::all()->count();
+        $active_lends_count = Lend::where('state', 'active')->count();
+        $comments_count = Comment::all()->count();
 
-        for ($i = 0; $i < 7; $i++) {
-            $lendDays[$i] = Jalalian::forge('now - ' . $i . ' days')->format('l');
-            $lendCount[$i] = Lend::whereDate('created_at', '=', Carbon::parse('today - ' . $i . ' days')->toDateString())->get()->count();
-        }
+        $last_articles = Article::latest()->take(7)->get();
+        $last_comments = Comment::latest()->take(3)->get();
 
-        $articles = Article::latest()->take(7)->get();
-        $comments = Comment::latest()->take(3)->get();
-        return view('admin.dashboard', compact('articles', 'lendDays', 'lendCount', 'comments'));
+        return view('admin.dashboard', compact('users_count', 'books_count', 'active_lends_count', 'comments_count', 'last_articles','last_comments'));
     }
 
     public function settings()
     {
         return view('admin.settings');
-    }
-
-    public function statistics()
-    {
-        return view('admin.statistics');
     }
 
     public function settingsStore()

@@ -21,7 +21,7 @@ class CreateLendsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('state')->default('lend');
+            $table->string('status')->default('lend');
             $table->integer('extend_count')->default(0);
             $table->integer('delay')->default(0);
             $table->timestamps();

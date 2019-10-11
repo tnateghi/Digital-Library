@@ -25,7 +25,7 @@
     @if($comments->isEmpty())
         <div class="block full">
             <!-- Get Started Content -->
-            لیست کاربران جدید خالی است.
+            دیدگاه ها خالی است.
             <!-- END Get Started Content -->
         </div>
     @else
