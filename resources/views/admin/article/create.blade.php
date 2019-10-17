@@ -54,7 +54,7 @@
                     <div class="form-group form-actions">
                         <div class="col-xs-12">
                             <div class="col-md-2 col-xs-4">
-                                <select name="state" class="form-control">
+                                <select name="status" class="form-control">
                                     <option value="publish" selected>انتشار</option>
                                     <option value="draft">پیش نویس</option>
                                 </select>

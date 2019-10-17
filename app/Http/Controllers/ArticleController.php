@@ -36,7 +36,7 @@ class ArticleController extends Controller
         auth()->user()->articles()->create([
             'title' => request('title'),
             'body' => request('body'),
-            'state' => request('state'),
+            'status' => request('status'),
         ]);
 
         session()->flash('message', 'نوشته با موفقیت ایجاد شد.');
@@ -50,7 +50,7 @@ class ArticleController extends Controller
         $article->update([
             'title' => request('title'),
             'body' => request('body'),
-            'state' => request('state'),
+            'status' => request('status'),
         ]);
 
         session()->flash('message', 'نوشته با موفقیت بروزرسانی شد.');
@@ -75,11 +75,11 @@ class ArticleController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'state' => 'required',
+            'status' => 'required',
         ], [
             'title.required' => 'لطفا عنوان نوشته را وارد کنید',
             'body.required' => 'لطفا متن نوشته را وارد کنید',
-            'state.required' => 'لطفا حالت نوشته را انتخاب کنید',
+            'status.required' => 'لطفا حالت نوشته را انتخاب کنید',
         ]);
     }
 }

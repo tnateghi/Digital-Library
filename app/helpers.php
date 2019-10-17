@@ -82,7 +82,7 @@ function tab($name)
 function isExtant($bookId)
 {
     $bookCount = Book::find($bookId)->count;
-    $bookLendCount = Lend::where('book_id', $bookId)->where('state', 'lend')->get()->count();
+    $bookLendCount = Lend::where('book_id', $bookId)->where('status', 'lend')->get()->count();
 
     return ($bookCount > $bookLendCount) ? true : false;
 }

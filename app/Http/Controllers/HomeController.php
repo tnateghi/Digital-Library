@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $articles = Article::where('state', 'publish')->latest()->paginate(10);
+        $articles = Article::where('status', 'publish')->latest()->paginate(10);
         $articlesChunk = $articles->chunk(2);
 
         return view('article.index', compact('articles', 'articlesChunk'));
@@ -43,7 +43,7 @@ class HomeController extends Controller
     {
         $users_count = User::where('level', '!=', 'new')->count();
         $books_count = Book::all()->count();
-        $active_lends_count = Lend::where('state', 'active')->count();
+        $active_lends_count = Lend::where('status', 'active')->count();
         $comments_count = Comment::all()->count();
 
         $last_articles = Article::latest()->take(7)->get();
@@ -116,7 +116,7 @@ class HomeController extends Controller
             $book_id = $lend->book_id;
 
             $lend->update([
-                'state' => 'return',
+                'status' => 'return',
             ]);
 
             Lend::create([
@@ -133,13 +133,13 @@ class HomeController extends Controller
 
     public function myActiveLends()
     {
-        $lends = auth()->user()->lends()->where('state', 'lend')->get();
+        $lends = auth()->user()->lends()->where('status', 'lend')->get();
         return view('admin.lend.myActiveLends', compact('lends'));
     }
 
     public function myLendsHistory()
     {
-        $lends = auth()->user()->lends()->where('state', 'return')->get();
+        $lends = auth()->user()->lends()->where('status', 'return')->get();
         return view('admin.lend.myLendsHistory', compact('lends'));
     }
 
