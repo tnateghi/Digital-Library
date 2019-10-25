@@ -1,17 +1,18 @@
-$("#form-validation").submit(function(e){
+$("#form-validation").submit(function (e) {
     e.preventDefault();
 
-    $(document).ajaxStart(function(){
+    $(document).ajaxStart(function () {
         $("#wait").removeClass("hidden");
     });
     $("#results").removeClass("animation-fadeInQuick");
     $("#noResult").removeClass("animation-slideUp");
 
-    $.ajax({url: "/admin/book-search?search=" + $("#search").val().replace(' ', '+'), success: function (response) {
+    $.ajax({
+        url: "/admin/book-search?search=" + $("#search").val().replace(' ', '+'), success: function (response) {
 
             $("#results_table").find("tbody tr").remove();
 
-            if (!response.length){
+            if (!response.length) {
                 $("#noResult").removeClass("hidden").addClass("animation-slideUp");
                 $("#results").addClass("hidden");
             }
@@ -21,16 +22,16 @@ $("#form-validation").submit(function(e){
             }
             $.each(response, function (i, item) {
                 var status;
-                
-                if(item.status) {
+
+                if (item.status) {
                     status = "<span class='label label-success'>موجود</span>";
                 }
                 else {
                     status = "<span class='label label-danger'>ناموجود</span>";
                 }
-                
-                if(typeof admin !== 'undefined'){
-                    var link  = "<a href='/admin/books/book_id'  class='btn btn-effect-ripple btn-xs btn-success' title=\"مشاهده\"><i class='fa fa-eye'></i></a>";
+
+                if (typeof admin !== 'undefined') {
+                    var link = "<a href='/admin/books/book_id'  class='btn btn-effect-ripple btn-xs btn-success' title=\"مشاهده\"><i class='fa fa-eye'></i></a>";
                     link = link.replace('book_id', item.id);
                 } else {
                     var link = "";
@@ -50,11 +51,11 @@ $("#form-validation").submit(function(e){
                 );
                 tr.appendTo('#results_table');
             })
-        },complete: function () {
+        }, complete: function () {
             $("#wait").addClass("hidden");
         },
 
-        error: function(){
+        error: function () {
             alert("خطایی در ارتباط رخ داده است!");
         }
     });
