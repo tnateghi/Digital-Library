@@ -150,9 +150,15 @@ class UserController extends Controller
             File::delete(public_path('user-img/' . $user->image));
         }
 
+        $level = $user->level;
+
         $user->delete();
 
         session()->flash('message', 'کاربر با موفقیت حذف شد');
+
+        if($level == 'new') {
+            return redirect(route('users.new'));
+        }
 
         return redirect(route('users.index'));
     }

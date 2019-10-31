@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->middleware('guest');
 Route::get('faq', 'HomeController@faq')->name('faq');
 
 Route::get('article/{article}', 'HomeController@show')->name('article.show');

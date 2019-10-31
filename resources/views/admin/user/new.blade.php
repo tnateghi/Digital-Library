@@ -93,9 +93,9 @@
                 </div>
                 <!-- END Row Styles Block -->
             </div>
-
-            @include('admin.layouts.messages')
         </div>
+        
+        @include('admin.layouts.messages')
     @endif
 
 @endsection
