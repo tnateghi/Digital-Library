@@ -49,7 +49,7 @@ class HomeController extends Controller
         $last_articles = Article::latest()->take(7)->get();
         $last_comments = Comment::latest()->take(3)->get();
 
-        return view('admin.dashboard', compact('users_count', 'books_count', 'active_lends_count', 'comments_count', 'last_articles','last_comments'));
+        return view('admin.dashboard', compact('users_count', 'books_count', 'active_lends_count', 'comments_count', 'last_articles', 'last_comments'));
     }
 
     public function settings()
@@ -153,17 +153,17 @@ class HomeController extends Controller
             $results = [];
             $i = 0;
             foreach ($books as $book) {
-                $results [$i]['id'] = $book->id;
-                $results [$i]['name'] = $book->name;
-                $results [$i]['author'] = $book->author;
-                $results [$i]['category'] = $book->category->name;
-                $results [$i]['bookmaker'] = $book->bookmaker;
-                $results [$i]['ed_year'] = $book->ed_year;
+                $results[$i]['id'] = $book->id;
+                $results[$i]['name'] = $book->name;
+                $results[$i]['author'] = $book->author;
+                $results[$i]['category'] = $book->category->name;
+                $results[$i]['bookmaker'] = $book->bookmaker;
+                $results[$i]['ed_year'] = $book->ed_year;
 
                 if (isExtant($book->id)) {
-                    $results [$i]['status'] = true;
+                    $results[$i]['status'] = true;
                 } else {
-                    $results [$i]['status'] = false;
+                    $results[$i]['status'] = false;
                 }
                 $i++;
             }
@@ -173,4 +173,8 @@ class HomeController extends Controller
         return view('admin.book.search');
     }
 
+    public function statistics()
+    {
+        return view('admin.statistics');
+    }
 }
