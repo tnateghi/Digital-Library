@@ -45,7 +45,7 @@
                         <ul class="timeline-list">
                             @foreach($comments as $comment)
                                 <li>
-                                    <div class="timeline-time">{{ jDate::forge($comment->created_at)->ago() }}</div>
+                                    <div class="timeline-time">{{ jdate($comment->created_at)->ago() }}</div>
                                     <img class="img-thumbnail-transparent timeline-icon" src="{{ $comment->user->getImage }}" />
                                     <div class="timeline-content">
                                         <p class="push-bit small">

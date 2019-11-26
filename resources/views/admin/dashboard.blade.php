@@ -120,7 +120,7 @@
                                         <img style="width: 40px;height: 40px;" src="{{ $comment->user->getImage }}" alt="{{ $comment->user->fullName }}" class="img-circle">
                                     </a>
                                     <div class="media-body">
-                                        <span class="text-muted pull-right"><small><em>{{ \Morilog\Jalali\Jalalian::forge($comment->created_at)->ago() }}</em></small></span>
+                                        <span class="text-muted pull-right"><small><em>{{ jdate($comment->created_at)->ago() }}</em></small></span>
                                         <small><a target="_blank" @can('users-admin') href="{{ route('users.show', ['user' => $comment->user->id]) }}" @endcan>{{ $comment->user->fullname }}</a> در <a target="_blank" href="{{ route('article.show', ['article' => $comment->article->slug]) }}">{{ $comment->article->title }}</a></small>
 
                                         @php
