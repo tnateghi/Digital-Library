@@ -34,9 +34,9 @@
                     <div class="form-group form-actions">
                         <div class="col-xs-12">
                             <div class="col-md-2">
-                                <select name="state" class="form-control">
-                                    <option value="publish" @if($article->state == 'publish') selected @endif>انتشار</option>
-                                    <option value="draft" @if($article->state == 'draft') selected @endif>پیش نویس</option>
+                                <select name="status" class="form-control">
+                                    <option value="publish" @if($article->status == 'publish') selected @endif>انتشار</option>
+                                    <option value="draft" @if($article->status == 'draft') selected @endif>پیش نویس</option>
                                 </select>
                             </div>
                             <input type="hidden" name="submit">
