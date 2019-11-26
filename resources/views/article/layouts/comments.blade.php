@@ -15,7 +15,7 @@
                             </a>
                             <div class="media-body">
                                 <strong>{{ $comment->user->fullname }}</strong>
-                                <span class="text-muted"><small><em>{{ jDate::forge($comment->created_at)->ago() }}</em></small></span>
+                                <span class="text-muted"><small><em>{{ jdate($comment->created_at)->ago() }}</em></small></span>
                                 {{--<a href="#" class="pull-left btn btn-xs btn-primary">پاسخ به دیدگاه</a>--}}
                                 <p>{{ $comment->body }}</p>
                             </div>

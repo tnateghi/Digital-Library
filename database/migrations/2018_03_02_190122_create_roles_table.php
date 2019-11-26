@@ -69,7 +69,7 @@ class CreateRolesTable extends Migration
         }
 
         $manager = DB::table('roles')->insertGetId([
-            'name' => 'manager',
+            'name' => 'مدیر کل',
             'created_at' => Carbon\Carbon::now(),
         ]);
 

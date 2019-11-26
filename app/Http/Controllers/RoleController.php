@@ -46,7 +46,6 @@ class RoleController extends Controller
 
         $role = Role::create([
             'name' => $request->input('name'),
-            'label' => $request->input('label'),
         ]);
         $role->permissions()->sync($request->input('permission_id'));
 
@@ -91,7 +90,6 @@ class RoleController extends Controller
 
         $role->update([
             'name' => $request->input('name'),
-            'label' => $request->input('label'),
         ]);
         $role->permissions()->sync($request->input('permission_id'));
 

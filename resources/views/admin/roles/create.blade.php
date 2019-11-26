@@ -57,15 +57,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="label">توضیحات مقام </label>
-                        <div class="col-md-6">
-                            <input type="text" id="label" name="label" class="form-control" value="{{ old('label') }}" >
-                        </div>
-                    </div>
-
-
-
                     <div class="form-group form-actions">
                         <div class="col-md-8 col-md-offset-3">
                             <button type="submit" class="btn btn-effect-ripple btn-primary">ذخیره</button>

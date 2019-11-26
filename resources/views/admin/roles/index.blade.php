@@ -41,7 +41,6 @@
                             <tr>
                                 <th class="text-center" style="width: 50px;">ID</th>
                                 <th>عنوان مقام</th>
-                                <th>توضیحات</th>
                                 <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th>
                             </tr>
                         </thead>
@@ -50,9 +49,8 @@
                                 <tr>
                                     <td class="text-center">{{ $role->id }}</td>
                                     <td><strong>{{ $role->name }}</strong></td>
-                                    <td>{{ $role->label }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('roles.show', ['id' => $role->id]) }}" title="مشاهده و ویرایش" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('roles.show', ['role' => $role]) }}" title="مشاهده و ویرایش" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

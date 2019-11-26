@@ -31,17 +31,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">توضیحات : </label>
-                        <div class="col-md-6">
-                            <p class="form-control-static">{{ $role->label }}</p>
-                        </div>
-                    </div>
-
 
                     <div class="form-group form-actions">
                         <div class="col-md-12 col-md-offset-1">
-                            <a href="{{ route('roles.edit', ['roles' => $role->id]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-edit"></i> ویرایش</button></a>
+                            <a href="{{ route('roles.edit', ['role' => $role]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-edit"></i> ویرایش</button></a>
                             <a href="#modal-fade" data-toggle="modal" title="حذف"><button type="button" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative;"><i class="fa fa-trash"></i> حذف مقام</button></a>
                         </div>
                     </div>
@@ -49,7 +42,7 @@
 
                 <!-- END Form Validation Form -->
 
-                <form id="delete-roles-form" action="{{ route('roles.destroy', ['roles' => $role->id]) }}" method="post">
+                <form id="delete-roles-form" action="{{ route('roles.destroy', ['role' => $role]) }}" method="post">
                     {!! csrf_field() !!}
                     {{ method_field('DELETE') }}
                 </form>
