@@ -83,7 +83,7 @@
                                     <tr>
                                         <td><a href="{{ route('article.show', ['article' => $article->slug]) }}" target="_blank"><strong>{{ $article->title }}</strong></a></td>
 
-                                        @if($article->state == 'publish')
+                                        @if($article->status == 'publish')
                                             <td class="text-center"><span class="label label-success">منتشر شده</span></td>
                                         @else
                                             <td class="text-center"><span class="label label-danger">پیش نویس</span></td>
