@@ -8,7 +8,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -97,13 +96,13 @@ class UserController extends Controller
                     'image' => $randomString,
                 ]);
 
-                Input::file('file')
+                request('file')
                     ->move(public_path('user-img'), $randomString);
 
             } else {
                 $randomString = $user->image;
 
-                Input::file('file')
+                request('file')
                     ->move(public_path('user-img'), $randomString);
             }
         }
@@ -151,9 +150,15 @@ class UserController extends Controller
             File::delete(public_path('user-img/' . $user->image));
         }
 
+        $level = $user->level;
+
         $user->delete();
 
         session()->flash('message', 'کاربر با موفقیت حذف شد');
+
+        if($level == 'new') {
+            return redirect(route('users.new'));
+        }
 
         return redirect(route('users.index'));
     }

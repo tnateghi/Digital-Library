@@ -23,6 +23,10 @@
     <!-- END Blank Header -->
 
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+        @include('admin.layouts.errors')
+        @include('admin.layouts.messages')
+
         <!-- Block Tabs -->
         <div class="block full">
             <!-- Block Tabs Title -->
@@ -135,8 +139,7 @@
             <!-- END Tabs Content -->
         </div>
         <!-- END Block Tabs -->
-        @include('admin.layouts.errors')
-        @include('admin.layouts.messages')
+
     </div>
 
 @endsection

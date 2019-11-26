@@ -30,7 +30,6 @@
             <div class="block">
                 <!-- CKEditor Title -->
                 <div class="block-title">
-
                     <h2>افزودن نوشته</h2>
                 </div>
                 <!-- END CKEditor Title -->
@@ -43,7 +42,6 @@
                         <div class="col-md-12">
                             <input type="text" id="title" name="title" class="form-control" placeholder="عنوان نوشته" value="{{ old('title') }}">
                         </div>
-
                     </div>
 
                     <fieldset>
@@ -56,7 +54,7 @@
                     <div class="form-group form-actions">
                         <div class="col-xs-12">
                             <div class="col-md-2 col-xs-4">
-                                <select name="state" class="form-control">
+                                <select name="status" class="form-control">
                                     <option value="publish" selected>انتشار</option>
                                     <option value="draft">پیش نویس</option>
                                 </select>

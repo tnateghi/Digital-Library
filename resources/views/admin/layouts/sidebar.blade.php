@@ -2,7 +2,7 @@
     <!-- Sidebar Brand -->
     <div id="sidebar-brand" class="themed-background">
         <a href="/" class="sidebar-title" title="{{ config('app.name', 'کتابخانه دیجیتال') }}">
-            <i class="fa fa-cube"></i> <span class="sidebar-nav-mini-hide"><strong>{{ config('app.name', 'کتابخانه دیجیتال') }}</strong></span>
+            <i class="fa fa-book"></i> <span class="sidebar-nav-mini-hide"><strong>{{ config('app.name', 'کتابخانه دیجیتال') }}</strong></span>
         </a>
     </div>
     <!-- END Sidebar Brand -->

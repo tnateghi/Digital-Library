@@ -35,7 +35,8 @@
                             <th>نویسنده</th>
                             <th>امانت گیرنده</th>
                             <th>تاریخ امانت</th>
-                            @can('users-admin') <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th> @endcan
+                            @can('users-admin')
+                                <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th> @endcan
                         </tr>
                         </thead>
                         <tbody>
@@ -46,9 +47,12 @@
                                 <td>{{ $lend->user->fullName }}</td>
                                 <td><span class="label label-success">@jalali($lend->created_at)</span></td>
                                 @can('users-admin')
-                                <td class="text-center">
-                                    <a href="{{ route('users.activeLends', ['user' => $lend->user_id]) }}" data-toggle="tooltip" data-placement="top" title="امانت های جاری" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
-                                </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('users.activeLends', ['user' => $lend->user_id]) }}"
+                                           data-toggle="tooltip" data-placement="top" title="امانت های جاری"
+                                           class="btn btn-effect-ripple btn-xs btn-success"
+                                           style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+                                    </td>
                                 @endcan
                             </tr>
                         @endforeach

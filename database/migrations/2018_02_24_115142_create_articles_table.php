@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('state')->default('publish');
+            $table->string('status')->default('publish');
             $table->string('title');
             $table->string('slug');
             $table->text('body');

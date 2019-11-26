@@ -17,7 +17,7 @@ class LendController extends Controller
 
     public function allActiveLends()
     {
-        $lends = Lend::where('state', 'lend')->get();
+        $lends = Lend::where('status', 'lend')->get();
         return view('admin.lend.allActiveLends', compact('lends'));
     }
 
@@ -37,14 +37,14 @@ class LendController extends Controller
         $bookId = request('bookId');
 
         //if user already has lend this book can not lend again
-        if (!(Lend::where('user_id', $user->id)->where('book_id', $bookId)->where('state', 'lend')->get()->isEmpty())) {
+        if (!(Lend::where('user_id', $user->id)->where('book_id', $bookId)->where('status', 'lend')->get()->isEmpty())) {
             session()->flash('error', 'کتاب وارد شده از قبل در لیست امانت های جاری کاربر موجود است');
             return back()
                 ->withInput();
         }
 
         //if user has 3 active lends can not lend other book (limits 3)
-        if (Lend::where('user_id', $user->id)->where('state', 'lend')->count() >= 3) {
+        if (Lend::where('user_id', $user->id)->where('status', 'lend')->count() >= 3) {
             session()->flash('error', 'تعداد امانت های کاربر به پایان رسیده است');
             return back()
                 ->withInput();
@@ -116,7 +116,7 @@ class LendController extends Controller
             $user_id = $lend->user_id;
 
             $lend->update([
-                'state' => 'return',
+                'status' => 'return',
             ]);
 
             Lend::create([
@@ -133,7 +133,7 @@ class LendController extends Controller
 
     public function returnLend(Lend $lend)
     {
-        if ($lend->state != 'lend') {
+        if ($lend->status != 'lend') {
             abort(404);
         }
 
@@ -149,7 +149,7 @@ class LendController extends Controller
         }
 
         $lend->update([
-            'state' => 'return',
+            'status' => 'return',
             'delay' => $delay
         ]);
 
@@ -159,13 +159,13 @@ class LendController extends Controller
 
     public function activeLends(User $user)
     {
-        $lends = $user->lends()->where('state', 'lend')->get();
+        $lends = $user->lends()->where('status', 'lend')->get();
         return view('admin.lend.activeLends', compact('lends', 'user'));
     }
 
     public function lendsHistory(User $user)
     {
-        $lends = $user->lends()->where('state', 'return')->get();
+        $lends = $user->lends()->where('status', 'return')->get();
         return view('admin.lend.lendsHistory', compact('lends', 'user'));
     }
 }

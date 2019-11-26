@@ -5,6 +5,7 @@ use App\Book;
 use App\Option;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Milon\Barcode\DNS1D;
@@ -81,7 +82,7 @@ function tab($name)
 function isExtant($bookId)
 {
     $bookCount = Book::find($bookId)->count;
-    $bookLendCount = Lend::where('book_id', $bookId)->where('state', 'lend')->get()->count();
+    $bookLendCount = Lend::where('book_id', $bookId)->where('status', 'lend')->get()->count();
 
     return ($bookCount > $bookLendCount) ? true : false;
 }
@@ -89,9 +90,12 @@ function isExtant($bookId)
 function barcode($str)
 {
     $barcode = new DNS1D();
+
     if (!is_dir(public_path() . '/img/barcode')) {
         File::makeDirectory(public_path() . '/img/barcode/');
     }
+
+    $barcode->setStorPath(public_path() . '/img/barcode/');
     return $barcode->getBarcodePNGPath($str, "C39E", 3, 33, array(69, 78, 89));
 }
 
@@ -124,4 +128,11 @@ function can_delete_user($user_id)
     }
 
     return false;
+}
+
+function str_random($length = 20)
+{
+    $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
 }

@@ -11,6 +11,14 @@
         <div class="animation-fadeInQuickInv">
             @include('admin.layouts.errors')
             @include('admin.layouts.messages')
+
+            @if(session('status'))
+
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <p>{{ session('status') }}</p>
+                </div>
+            @endif
         </div>
 
         <!-- Register Form -->

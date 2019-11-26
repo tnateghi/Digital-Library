@@ -24,14 +24,6 @@ class ArticleController extends Controller
         return view('admin.article.comments', compact('comments'));
     }
 
-    public function commentDestroy(Comment $comment)
-    {
-        $comment->delete();
-
-        session()->flash('message', 'دیدگاه با موفقیت حذف شد.');
-        return back();
-    }
-
     public function create()
     {
         return view('admin.article.create');
@@ -39,17 +31,16 @@ class ArticleController extends Controller
 
     public function store()
     {
-
         $this->validation();
 
         auth()->user()->articles()->create([
             'title' => request('title'),
             'body' => request('body'),
-            'state' => request('state'),
+            'status' => request('status'),
         ]);
 
         session()->flash('message', 'نوشته با موفقیت ایجاد شد.');
-        return back();
+        return redirect('admin/articles');
     }
 
     public function update(Article $article)
@@ -59,7 +50,7 @@ class ArticleController extends Controller
         $article->update([
             'title' => request('title'),
             'body' => request('body'),
-            'state' => request('state'),
+            'status' => request('status'),
         ]);
 
         session()->flash('message', 'نوشته با موفقیت بروزرسانی شد.');
@@ -71,7 +62,7 @@ class ArticleController extends Controller
         $article->delete();
 
         session()->flash('message', 'نوشته با موفقیت حذف شد.');
-        return back();
+        return redirect('admin/articles');
     }
 
     public function edit(Article $article)
@@ -84,11 +75,11 @@ class ArticleController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'state' => 'required',
+            'status' => 'required',
         ], [
             'title.required' => 'لطفا عنوان نوشته را وارد کنید',
             'body.required' => 'لطفا متن نوشته را وارد کنید',
-            'state.required' => 'لطفا حالت نوشته را انتخاب کنید',
+            'status.required' => 'لطفا حالت نوشته را انتخاب کنید',
         ]);
     }
 }
