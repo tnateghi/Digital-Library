@@ -5,7 +5,7 @@
     <div id="login-container">
         <!-- Login Header -->
         <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
-            <i class="fa fa-cube"></i> {{ config('app.name', 'کتابخانه دیجیتال') }}
+            <i class="fa fa-book"></i> {{ config('app.name', 'کتابخانه دیجیتال') }}
         </h1>
         <!-- END Login Header -->
 

@@ -6,7 +6,7 @@
 
         <title>{{ config('app.name', 'کتابخانه دیجیتال') }}</title>
 
-        <meta name="description" content="library project by nateghi">
+        <meta name="description" content="Digital Library Project By Tohid Nateghi">
         <meta name="author" content="nateghi">
         <meta name="robots" content="noindex, nofollow">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
