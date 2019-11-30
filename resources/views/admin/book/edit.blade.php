@@ -18,7 +18,7 @@
                 <!-- END Form Validation Title -->
 
                 <!-- Form Validation Form -->
-                <form action="{{ route('books.update', ['id' => $book->id]) }}" id="form-validation"  method="post" class="form-horizontal form-bordered">
+                <form action="{{ route('books.update', ['book' => $book]) }}" id="form-validation"  method="post" class="form-horizontal form-bordered">
                     {!! csrf_field() !!}
                     {{ method_field('PATCH') }}
 

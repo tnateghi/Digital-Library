@@ -49,7 +49,7 @@ class BookController extends Controller
 
         session()->flash('message', 'اطلاعات کتاب با موفقیت بروزرسانی شد.');
 
-        return back();
+        return redirect(route('books.index'));
     }
 
     public function index()

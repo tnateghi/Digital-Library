@@ -53,6 +53,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4 col-md-offset-1">توضیحات : </label>
+                        <div class="col-md-6">
+                            <p class="form-control-static">{{ $book->description }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-4 col-md-offset-1">دسته بندی : </label>
                         <div class="col-md-6">
                             <p class="form-control-static label label-default">{{ $book->category->name }}</p>

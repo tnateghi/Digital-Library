@@ -30,6 +30,8 @@
     @else
         <div class="row">
             <div class="col-lg-12">
+                @include('admin.layouts.messages')
+                
                 <!-- Row Styles Block -->
                 <div class="block">
                     <!-- Row Styles Content -->
@@ -72,7 +74,6 @@
                 </div>
                 <!-- END Row Styles Block -->
 
-                @include('admin.layouts.messages')
             </div>
         </div>
     @endif
