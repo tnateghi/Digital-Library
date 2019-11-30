@@ -132,7 +132,7 @@ class UserController extends Controller
 
         session()->flash('message', 'اطلاعات کاربر با موفقیت بروزرسانی شد.');
 
-        return back();
+        return redirect(route('users.index'));
 
     }
 

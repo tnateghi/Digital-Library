@@ -35,10 +35,10 @@
         <div class="row">
             <!-- Tables Row -->
             <div class="col-lg-12">
+                @include('admin.layouts.messages')
+
                 <!-- Row Styles Block -->
                 <div class="block">
-
-
                     <!-- Row Styles Content -->
                     <div class="table-responsive">
                         <table class="table table-borderless table-vcenter table-hover">
@@ -72,7 +72,6 @@
                     <!-- END Row Styles Content -->
                 </div>
                 <!-- END Row Styles Block -->
-                @include('admin.layouts.messages')
             </div>
         </div>
     @endif
