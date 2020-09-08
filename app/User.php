@@ -91,4 +91,9 @@ class User extends Authenticatable
         $query->WhereRaw("concat(firstName, ' ', lastName) like '%{$keyword}%' ");
         return $query;
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
