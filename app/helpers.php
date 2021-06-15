@@ -136,3 +136,16 @@ function str_random($length = 20)
 
     return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
 }
+
+function get_date($date, $format = null)
+{
+    switch (app()->getLocale()) {
+        case "fa": {
+                return jdate($date);
+            }
+
+        default: {
+                return $format ? $date->format($format) : $date;
+            }
+    }
+}

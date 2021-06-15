@@ -26,11 +26,6 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        return jDate($value)->format('%d %B %Y');
-    }
-
     /**
      * Return the sluggable configuration array for this model.
      *

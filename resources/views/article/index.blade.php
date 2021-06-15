@@ -5,7 +5,7 @@
     <!-- Intro -->
     <section class="site-section site-section-top site-section-light themed-background-dark">
         <div class="container">
-            <h1 class="text-center animation-fadeInQuickInv"><strong>آخرین نوشته ها</strong></h1>
+            <h1 class="text-center animation-fadeInQuickInv"><strong>{{ __('messages.posts.index.latest_posts') }}</strong></h1>
         </div>
     </section>
     <!-- END Intro -->
@@ -15,7 +15,7 @@
         <div class="container">
             @if($articles->count() == 0)
                 <div class="row row-items">
-                    <p><strong>پستی برای نمایش وجود ندارد !</strong></p>
+                    <p><strong>{{ __('messages.posts.index.empty_posts') }} !</strong></p>
                 </div>
             @endif
             @foreach($articlesChunk as $row)
@@ -24,7 +24,7 @@
                         <div class="col-md-6">
                             <a href="{{ route('article.show', ['article' => $article->slug]) }}" class="post">
 
-                                <div class="text-muted pull-left">{{ $article->created_at }}</div>
+                                <div class="text-muted pull-left">{{ get_date($article->created_at, 'Y-m-d') }}</div>
                                 <h2 class="h4">
                                     <strong>{{ $article->title }}</strong>
                                 </h2>
