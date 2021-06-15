@@ -1,8 +1,8 @@
 <div id="sidebar">
     <!-- Sidebar Brand -->
     <div id="sidebar-brand" class="themed-background">
-        <a href="/" class="sidebar-title" title="{{ config('app.name', 'کتابخانه دیجیتال') }}">
-            <i class="fa fa-book"></i> <span class="sidebar-nav-mini-hide"><strong>{{ config('app.name', 'کتابخانه دیجیتال') }}</strong></span>
+        <a href="/" class="sidebar-title" title="{{ config('app.name') }}">
+            <i class="fa fa-book"></i> <span class="sidebar-nav-mini-hide"><strong>{{ config('app.name') }}</strong></span>
         </a>
     </div>
     <!-- END Sidebar Brand -->
@@ -16,28 +16,28 @@
 
                 @if(isAdmin())
                     <li>
-                        <a title="داشبورد" {{ href('dashboard') }}><i class="gi gi-dashboard sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">داشبورد</span></a>
+                        <a title="{{ __('messages.admin.sidebar.dashboard') }}" {{ href('dashboard') }}><i class="gi gi-dashboard sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.dashboard') }}</span></a>
                     </li>
                 @endif
 
                 <li>
-                    <a title="پروفایل من" {{ href('profile') }}><i class="hi hi-user sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">پروفایل من</span></a>
+                    <a title="{{ __('messages.admin.sidebar.profile') }}" {{ href('profile') }}><i class="hi hi-user sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.profile') }}</span></a>
                 </li>
 
                 @if(isAdmin())
 
                     @can('articles-admin')
                         <li {{ active_menu(['articles.create', 'articles.index', 'articles.comments']) }}>
-                            <a href="#" title="مدیریت نوشته ها" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-pencil sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">مدیریت نوشته ها</span></a>
+                            <a href="#" title="{{ __('messages.admin.sidebar.posts') }}" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-pencil sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.posts') }}</span></a>
                             <ul>
                                 <li>
-                                    <a {{ href('articles.index') }}>نوشته ها</a>
+                                    <a {{ href('articles.index') }}>{{ __('messages.admin.sidebar.posts_list') }}</a>
                                 </li>
                                 <li>
-                                    <a {{ href('articles.create') }}>افزودن نوشته جدید</a>
+                                    <a {{ href('articles.create') }}>{{ __('messages.admin.sidebar.create_post') }}</a>
                                 </li>
                                 <li>
-                                    <a {{ href('articles.comments') }}>دیدگاه ها</a>
+                                    <a {{ href('articles.comments') }}>{{ __('messages.admin.sidebar.comments') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -45,17 +45,17 @@
 
                     @can('books-admin')
                         <li {{ active_menu(['books.create', 'books.index', 'book-categories.index']) }}>
-                            <a href="#" title="مدیریت کتاب ها" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-book sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">مدیریت کتاب ها</span></a>
+                            <a href="#" title="{{ __('messages.admin.sidebar.books') }}" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-book sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.books') }}</span></a>
                             <ul>
 
                                 <li>
-                                    <a {{ href('books.index') }}>لیست کتاب ها</a>
+                                    <a {{ href('books.index') }}>{{ __('messages.admin.sidebar.books_list') }}</a>
                                 </li>
                                 <li>
-                                    <a {{ href('book-categories.index') }} >مدیریت دسته بندی ها</a>
+                                    <a {{ href('book-categories.index') }} >{{ __('messages.admin.sidebar.categories') }}</a>
                                 </li>
                                 <li>
-                                    <a {{ href('books.create') }}>افزودن کتاب جدید</a>
+                                    <a {{ href('books.create') }}>{{ __('messages.admin.sidebar.create_book') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -63,16 +63,16 @@
 
                     @can('users-admin')
                         <li {{ active_menu(['users.create', 'users.index', 'users.new']) }}>
-                            <a href="#" title="مدیریت کاربران" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-users sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">مدیریت کاربران</span></a>
+                            <a href="#" title="{{ __('messages.admin.sidebar.users') }}" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-users sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.users') }}</span></a>
                             <ul>
                                 <li>
-                                    <a {{ href('users.index') }}>لیست کاربران</a>
+                                    <a {{ href('users.index') }}>{{ __('messages.admin.sidebar.users_list') }}</a>
                                 </li>
                                 <li>
-                                    <a {{ href('users.new') }}>کاربران جدید <span class="label label-danger">{{ \App\User::where('level', 'new')->get()->count() }}</span></a>
+                                    <a {{ href('users.new') }}>{{ __('messages.admin.sidebar.new_users') }} <span class="label label-danger">{{ \App\User::where('level', 'new')->get()->count() }}</span></a>
                                 </li>
                                 <li>
-                                    <a {{ href('users.create') }}>افزودن کاربر جدید</a>
+                                    <a {{ href('users.create') }}>{{ __('messages.admin.sidebar.create_user') }}</a>
                                 </li>
 
                             </ul>
@@ -137,15 +137,15 @@
                     @endcan
 
                     <li {{ active_menu(['users.search', 'books.search']) }}>
-                        <a href="#" title="جستجو" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="hi hi-search sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">جستجو</span></a>
+                        <a href="#" title="{{ __('messages.admin.sidebar.search') }}" class="sidebar-nav-menu"><i class="fa fa-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="hi hi-search sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.search') }}</span></a>
                         <ul>
                             @can('users-admin')
                                 <li>
-                                    <a {{ href('users.search') }}>جستجوی کاربر</a>
+                                    <a {{ href('users.search') }}>{{ __('messages.admin.sidebar.search_user') }}</a>
                                 </li>
                             @endcan
                             <li>
-                                <a {{ href('books.search') }}>جستجوی کتاب</a>
+                                <a {{ href('books.search') }}>{{ __('messages.admin.sidebar.search_book') }}</a>
                             </li>
 
                         </ul>
@@ -157,7 +157,7 @@
 
                     @can('settings-admin')
                         <li>
-                            <a title="تنظیمات" {{ href('settings') }}><i class="gi gi-settings sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">تنظیمات</span></a>
+                            <a title="{{ __('messages.admin.sidebar.settings') }}" {{ href('settings') }}><i class="gi gi-settings sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">{{ __('messages.admin.sidebar.settings') }}</span></a>
                         </li>
                     @endcan
 
@@ -197,7 +197,7 @@
     <!-- Sidebar Extra Info -->
     <div id="sidebar-extra-info" class="sidebar-content sidebar-nav-mini-hide">
         <div class="text-center">
-            <small>توسعه یافته با <i class="fa fa-heart text-danger"></i> توسط <a href="https://t-nateghi.ir/" target="_blank">ناطقی</a></small><br>
+            {!! __('messages.posts.footer.footer_text') !!}
         </div>
     </div>
     <!-- END Sidebar Extra Info -->

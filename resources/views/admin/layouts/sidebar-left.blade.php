@@ -8,7 +8,7 @@
         <div class="sidebar-content">
             <!-- Profile -->
             <div class="sidebar-section">
-                <h2 class="text-light">پروفایل</h2>
+                <h2 class="text-light">{{ __('messages.admin.sidebar_left.profile') }}</h2>
                 <form action="" method="post" class="form-control-borderless" onsubmit="return false;">
                     <div class="form-group">
                         <label for="side-profile-name">نام</label>

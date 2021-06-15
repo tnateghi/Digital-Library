@@ -46,6 +46,37 @@ return [
             'remember_me' => 'Remember Me',
             'login' => 'Login',
         ]
+    ],
+
+    'admin' => [
+        'sidebar' => [
+            'dashboard' => 'Dashboard',
+            'profile' => 'Profile',
+            'posts' => 'Posts',
+            'posts_list' => 'Posts List',
+            'create_post' => 'Create Post',
+            'comments' => 'Comments',
+            'books' => 'Books',
+            'books_list' => 'Books List',
+            'categories' => 'Categories',
+            'create_book' => 'Create Book',
+            'users' => 'Users',
+            'users_list' => 'Users List',
+            'create_user' => 'Create User',
+            'new_users' => 'New Users',
+            'search' => 'Search',
+            'search_user' => 'Search User',
+            'search_book' => 'Search Book',
+            'settings' => 'Settings',
+        ],
+        'sidebar_left' => [
+            'profile' => 'Profile',
+        ],
+        'navbar' => [
+            'profile' => 'Profile',
+            'settings' => 'Settings',
+            'logout' => 'Logout',
+        ]
     ]
 
 ];

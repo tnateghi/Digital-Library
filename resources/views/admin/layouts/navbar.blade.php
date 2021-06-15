@@ -56,7 +56,7 @@
                 <li>
                     <a href="{{ route('profile') }}">
                         <i class="fa fa-pencil-square fa-fw pull-right"></i>
-                        پروفایل
+                        {{ __('messages.admin.navbar.profile') }}
                     </a>
                 </li>
                 <li class="divider"><li>
@@ -64,7 +64,7 @@
                     <li>
                         <a href="{{ route('settings') }}">
                             <i class="gi gi-settings fa-fw pull-right"></i>
-                            تنظیمات
+                            {{ __('messages.admin.navbar.settings') }}
                         </a>
                     </li>
                 @endcan
@@ -72,7 +72,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="post">{!! csrf_field() !!}</form>
                     <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">
                         <i class="fa fa-power-off fa-fw pull-right"></i>
-                        خروج
+                        {{ __('messages.admin.navbar.logout') }}
                     </a>
                 </li>
             </ul>
