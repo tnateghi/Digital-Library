@@ -34,6 +34,18 @@ return [
             'footer_text' => 'Develpoed with <i class="fa fa-heart text-danger"></i> by <a target="_blank" href="https://t-nateghi.ir/">Nateghi</a>',
         ]
 
+    ],
+
+    'auth' => [
+        'login' => [
+            'please_login' => 'Please Login',
+            'remember_password' => 'Remember Password',
+            'register' => 'Register',
+            'username' => 'Username',
+            'password' => 'Password',
+            'remember_me' => 'Remember Me',
+            'login' => 'Login',
+        ]
     ]
 
 ];

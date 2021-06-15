@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>{{ config('app.name', 'کتابخانه دیجیتال') }}</title>
+        <title>{{ config('app.name') }}</title>
 
         <meta name="description" content="Digital Library Project By Tohid Nateghi">
         <meta name="author" content="nateghi">
