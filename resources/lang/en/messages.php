@@ -4,6 +4,7 @@ return [
     'titles' => [
         'comment' => 'comment',
         'send' => 'send',
+        'blog' => 'Blog',
     ],
 
     'posts' => [
@@ -19,6 +20,19 @@ return [
             'login_to_write_comment' => 'Please Login to write Comment',
             'login' => 'Login'
         ],
+
+        'header' => [
+            'menu' => 'Menu',
+            'home' => 'Home',
+            'faq' => 'Faq',
+            'login' => 'Login',
+            'panel' => 'Panel',
+            'logout' => 'Logout',
+        ],
+
+        'footer' => [
+            'footer_text' => 'Develpoed with <i class="fa fa-heart text-danger"></i> by <a target="_blank" href="https://t-nateghi.ir/">Nateghi</a>',
+        ]
 
     ]
 
