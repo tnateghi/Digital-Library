@@ -21,7 +21,7 @@ class CreateBookCategoriesTable extends Migration
         });
 
         DB::table('book_categories')->insert([
-            'name' => 'دسته بندی پیش فرض',
+            'name' => 'test category',
         ]);
     }
 

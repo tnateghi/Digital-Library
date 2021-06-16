@@ -18,11 +18,11 @@ class UserSeeder extends Seeder
                 'username'    => 'admin',
             ],
             [
-                'firstName'   => 'توحید',
-                'lastName'    => 'ناطقی',
+                'firstName'   => 'koki',
+                'lastName'    => '-',
                 'email'       => 'nategit@gmail.com',
                 'tel'         => '09145769644',
-                'address'     => 'آذربایجان شرقی - سراب',
+                'address'     => 'goa',
                 'password'    => bcrypt('123456'),
                 'created_at'  => date("Y-m-d H:i:s")
             ]
