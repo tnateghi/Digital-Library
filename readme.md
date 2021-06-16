@@ -20,7 +20,7 @@ And ten more features
 
 ## Project source
 
-https://github.com/tohidnateghi/mylp
+https://github.com/tohidnateghi/Digital-Library
 
 ## Contact me on telegram
 
