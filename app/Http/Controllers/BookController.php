@@ -66,7 +66,7 @@ class BookController extends Controller
         return view('admin.book.index', compact('books'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $this->validation();
 
