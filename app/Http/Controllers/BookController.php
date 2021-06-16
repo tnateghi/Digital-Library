@@ -29,7 +29,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        session()->flash('message', 'کتاب با موفقیت حذف شد.');
+        session()->flash('message', __('messages.admin.books.messages.deleted'));
         return redirect(route('books.index'));
     }
 
@@ -47,7 +47,7 @@ class BookController extends Controller
             'category_id' => request('category'),
         ]);
 
-        session()->flash('message', 'اطلاعات کتاب با موفقیت بروزرسانی شد.');
+        session()->flash('message', __('messages.admin.books.messages.updated'));
 
         return redirect(route('books.index'));
     }
@@ -72,7 +72,7 @@ class BookController extends Controller
             'category_id' => request('category'),
         ]);
 
-        session()->flash('message', 'کتاب با موفقیت اضافه شد');
+        session()->flash('message', __('messages.admin.books.messages.created'));
 
         return back();
     }
@@ -86,15 +86,6 @@ class BookController extends Controller
             'count' => 'required',
             'category' => 'required|exists:book_categories,id',
             'ed_year' => 'required',
-
-        ], [
-            'bookName.required' => 'لطفا نام کتاب را وارد کنید',
-            'author.required' => 'لطفا نام نویسنده را وارد کنید',
-            'bookmaker.required' => 'لطفا نام انتشارات کتاب را وارد کنید',
-            'count.required' => 'لطفا تعداد کتاب را وارد کنید',
-            'category.required' => 'لطفا دسته بندی را انتخاب کنید',
-            'category.exists' => 'دسته بندی وارد شده موجود نیست',
-            'ed_year.required' => 'لطفا سال چاپ را وارد کنید',
         ]);
     }
 }

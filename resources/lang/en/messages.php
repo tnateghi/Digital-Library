@@ -139,6 +139,23 @@ return [
                 'please_select_category' => 'Please select Category',
                 'save' => 'Save',
                 'cancel' => 'Cancel',
+            ],
+            'messages' => [
+                'deleted' => 'Book successfully deleted',
+                'updated' => 'Book successfully updated',
+                'created' => 'Book successfully created',
+            ],
+            'search' => [
+                'search_book' => 'Search book',
+                'search_text' => 'Search text',
+                'search' => 'Search',
+                'book_name' => 'Book name',
+                'author' => 'Author',
+                'bookmaker' => 'Bookmaker',
+                'edition_year' => 'Edition Year',
+                'status' => 'Status',
+                'category' => 'Category',
+                'no_results_found' => 'No Resluts found',
             ]
         ]
     ]
