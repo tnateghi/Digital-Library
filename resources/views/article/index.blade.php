@@ -1,4 +1,4 @@
-@extends('article.master', ['title' => 'وبلاگ'])
+@extends('article.master', ['title' => __('messages.titles.blog')])
 
 @section('content')
 

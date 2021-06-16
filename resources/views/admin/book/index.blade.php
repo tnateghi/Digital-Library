@@ -1,4 +1,4 @@
-@extends('admin.layouts.master', ['title' => 'لیست کتاب ها'])
+@extends('admin.layouts.master', ['title' => __('messages.admin.sidebar.books_list')])
 
 @section('content')
     <!-- Blank Header -->
@@ -6,14 +6,14 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="header-section">
-                    <h1>لیست کتاب ها</h1>
+                    <h1>{{ __('messages.admin.books.index.books_list') }}</h1>
                 </div>
             </div>
             <div class="col-sm-6 hidden-xs">
                 <div class="header-section">
                     <ul class="breadcrumb breadcrumb-top">
-                        <li>مدیریت کتاب ها</li>
-                        <li>لیست کتاب ها</li>
+                        <li>{{ __('messages.admin.sidebar.books') }}</li>
+                        <li>{{ __('messages.admin.sidebar.books_list') }}</li>
                     </ul>
                 </div>
             </div>
@@ -24,14 +24,14 @@
     @if($books->isEmpty())
         <div class="block full">
             <!-- Get Started Content -->
-            لیست کتاب ها خالی است.
+            {{ __('messages.admin.books.index.books_list_is_empty') }}
             <!-- END Get Started Content -->
         </div>
     @else
         <div class="row">
             <div class="col-lg-12">
                 @include('admin.layouts.messages')
-                
+
                 <!-- Row Styles Block -->
                 <div class="block">
                     <!-- Row Styles Content -->
@@ -40,11 +40,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-center" style="width: 50px;">ID</th>
-                                    <th>نام کتاب</th>
-                                    <th>نویسنده</th>
-                                    <th>ناشر</th>
-                                    <th>سال چاپ</th>
-                                    <th class="text-center">وضعیت</th>
+                                    <th>{{ __('messages.admin.books.index.book_name') }}</th>
+                                    <th>{{ __('messages.admin.books.index.author') }}</th>
+                                    <th>{{ __('messages.admin.books.index.bookmaker') }}</th>
+                                    <th>{{ __('messages.admin.books.index.edition_year') }}</th>
+                                    <th class="text-center">{{ __('messages.admin.books.index.status') }}</th>
                                     <th style="width: 80px;" class="text-center"><i class="fa fa-flash"></i></th>
                                 </tr>
                             </thead>
@@ -58,12 +58,12 @@
                                         <td>{{ $book->ed_year }}</td>
 
                                         @if(isExtant($book->id))
-                                            <td class="text-center"><span class="label label-success">موجود</span></td>
+                                            <td class="text-center"><span class="label label-success">{{ __('messages.admin.books.index.status_available') }}</span></td>
                                         @else
-                                            <td class="text-center"><span class="label label-danger">ناموجود</span></td>
+                                            <td class="text-center"><span class="label label-danger">{{ __('messages.admin.books.index.status_notavailable') }}</span></td>
                                         @endif
                                         <td class="text-center">
-                                            <a href="{{ route('books.show', ['book' => $book->id]) }}" title="مشاهده" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('books.show', ['book' => $book->id]) }}" title="{{ __('messages.admin.books.index.view') }}" data-toggle="tooltip" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

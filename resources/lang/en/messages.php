@@ -76,6 +76,21 @@ return [
             'profile' => 'Profile',
             'settings' => 'Settings',
             'logout' => 'Logout',
+        ],
+
+        'books' => [
+            'index' => [
+                'books_list' => 'Books List',
+                'books_list_is_empty' => 'Books List is empty!',
+                'book_name' => 'Book name',
+                'author' => 'Author',
+                'bookmaker' => 'Bookmaker',
+                'edition_year' => 'Edition Year',
+                'status' => 'Status',
+                'status_available' => 'Available',
+                'status_notavailable' => 'Not Available',
+                'view' => 'View',
+            ]
         ]
     ]
 
