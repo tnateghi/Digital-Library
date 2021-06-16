@@ -97,8 +97,8 @@
                                 <tr>
                                     <td>{{ $lend->book->name }}</td>
                                     <td>{{ $lend->book->author }}</td>
-                                    <td>@jalali($lend->created_at)</td>
-                                    <td>@jalali(lend_return_date($lend->created_at))</td>
+                                    <td>{{ get_date($lend->created_at) }}</td>
+                                    <td>{{ get_date(lend_return_date($lend->created_at)) }}</td>
                                     <td class="text-center">
                                         @if(lend_expired($lend->created_at))
                                             <span class="btn-effect-ripple btn-xs btn-danger"

@@ -91,12 +91,14 @@ function barcode($str)
 {
     $barcode = new DNS1D();
 
-    if (!is_dir(public_path() . '/img/barcode')) {
-        File::makeDirectory(public_path() . '/img/barcode/');
+    if (!is_dir(public_path('img/barcode'))) {
+        File::makeDirectory(public_path('img/barcode'));
     }
 
-    $barcode->setStorPath(public_path() . '/img/barcode/');
-    return $barcode->getBarcodePNGPath($str, "C39E", 3, 33, array(69, 78, 89));
+    $barcode->setStorPath(public_path('img/barcode'));
+    $path = $barcode->getBarcodePNGPath($str, "C39E", 3, 33, array(69, 78, 89));
+
+    return '/img/barcode/'. basename($path);
 }
 
 function can_delete_user($user_id)

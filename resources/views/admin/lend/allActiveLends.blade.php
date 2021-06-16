@@ -45,7 +45,7 @@
                                 <td>{{ $lend->book->name }}</td>
                                 <td>{{ $lend->book->author }}</td>
                                 <td>{{ $lend->user->fullName }}</td>
-                                <td><span class="label label-success">@jalali($lend->created_at)</span></td>
+                                <td><span class="label label-success">{{ get_date($lend->created_at) }}</span></td>
                                 @can('users-admin')
                                     <td class="text-center">
                                         <a href="{{ route('users.activeLends', ['user' => $lend->user_id]) }}"

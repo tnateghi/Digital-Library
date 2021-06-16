@@ -114,6 +114,25 @@ return [
                 'category_for_edit' => 'Category for edit',
                 'please_select_category' => 'Please Select a category',
                 'category_new_name' => 'Category new name',
+            ],
+            'show' => [
+                'book_details' => 'Book Details',
+                'book_name' => 'Book name',
+                'author' => 'Author',
+                'bookmaker' => 'Bookmaker',
+                'count' => 'Count',
+                'category' => 'Category',
+                'create_date' => 'Create Date',
+                'edition_year' => 'Edition Year',
+                'description' => 'Description',
+                'added_by' => 'Added by',
+                'edit' => 'Edit',
+                'print_barcode' => 'Print Barcode',
+                'delete' => 'Delete',
+                'alert' => 'Alert',
+                'delete_alert_text' => 'Do you want to delete this book?',
+                'delete_confirm_text' => 'Yes',
+                'delete_cancel_text' => 'No',
             ]
         ]
     ]

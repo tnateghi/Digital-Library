@@ -56,8 +56,8 @@
                                 <tr>
                                     <td>{{ $lend->book->name }}</td>
                                     <td>{{ $lend->book->author }}</td>
-                                    <td class="text-center">@jalali($lend->created_at)</td>
-                                    <td class="text-center">@jalali($lend->updated_at)</td>
+                                    <td class="text-center">{{ get_date($lend->created_at) }}</td>
+                                    <td class="text-center">{{ get_date($lend->updated_at) }}</td>
                                     <td class="text-center">{{ $lend->delay }}</td>
                                 </tr>
                             @endforeach
