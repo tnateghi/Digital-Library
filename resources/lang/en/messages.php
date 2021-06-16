@@ -133,6 +133,12 @@ return [
                 'delete_alert_text' => 'Do you want to delete this book?',
                 'delete_confirm_text' => 'Yes',
                 'delete_cancel_text' => 'No',
+            ],
+            'edit' => [
+                'edit_book' => 'Edit book',
+                'please_select_category' => 'Please select Category',
+                'save' => 'Save',
+                'cancel' => 'Cancel',
             ]
         ]
     ]

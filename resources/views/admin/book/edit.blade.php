@@ -1,4 +1,4 @@
-@extends('admin.layouts.master', ['title' => 'ویرایش کتاب'])
+@extends('admin.layouts.master', ['title' => __('messages.admin.books.edit.edit_book')])
 
 @section('content')
 
@@ -13,7 +13,7 @@
             <div class="block">
                 <!-- Form Validation Title -->
                 <div class="block-title">
-                    <h2>ویرایش کتاب</h2>
+                    <h2>{{ __('messages.admin.books.edit.edit_book') }}</h2>
                 </div>
                 <!-- END Form Validation Title -->
 
@@ -23,38 +23,38 @@
                     {{ method_field('PATCH') }}
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-bookname">نام کتاب <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="val-bookname">{{ __('messages.admin.books.show.book_name') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="text" id="val-bookname" name="bookName" class="form-control" value="{{ $book->name }}" >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-author">نویسنده <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="val-author">{{ __('messages.admin.books.show.author') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="text" id="val-author" name="author" class="form-control" value="{{ $book->author }}" >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-bookmaker">ناشر <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="val-bookmaker">{{ __('messages.admin.books.show.bookmaker') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="text" id="val-bookmaker" name="bookmaker" class="form-control" value="{{ $book->bookmaker }}" >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="range">تعداد <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="range">{{ __('messages.admin.books.show.count') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="number" id="val-range" name="count" class="form-control" value="{{ $book->count }}" >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-category">دسته <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="val-category">{{ __('messages.admin.books.show.category') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <select id="val-category" name="category" class="form-control">
-                                <option value="">لطفا انتخاب کنید</option>
+                                <option value="">{{ __('messages.admin.books.edit.please_select_category') }}</option>
                                 @foreach(\App\BookCategory::all() as $category)
                                     <option value="{{ $category->id }}" @if($book->category_id == $category->id) selected @endif>{{ $category->name }}</option>
                                 @endforeach
@@ -62,14 +62,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-ed_year">سال چاپ <span class="text-danger">*</span></label>
+                        <label class="col-md-3 control-label" for="val-ed_year">{{ __('messages.admin.books.show.edition_year') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="text" id="val-ed_year" name="ed_year" class="form-control" value="{{ $book->ed_year }}" >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="val-description">توضیحات </label>
+                        <label class="col-md-3 control-label" for="val-description">{{ __('messages.admin.books.show.description') }} </label>
                         <div class="col-md-9">
                             <textarea id="val-description" name="description" rows="7" class="form-control" >{{ $book->description }}</textarea>
                         </div>
@@ -77,8 +77,8 @@
 
                     <div class="form-group form-actions">
                         <div class="col-md-8 col-md-offset-3">
-                            <button type="submit" class="btn btn-effect-ripple btn-primary">ذخیره</button>
-                            <button type="reset" class="btn btn-effect-ripple btn-danger">تازه کردن</button>
+                            <button type="submit" class="btn btn-effect-ripple btn-primary">{{ __('messages.admin.books.edit.save') }}</button>
+                            <button type="reset" class="btn btn-effect-ripple btn-danger">{{ __('messages.admin.books.edit.cancel') }}</button>
                         </div>
                     </div>
                     <input type="hidden" name="submit" />

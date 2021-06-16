@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">{{ __('messages.admin.books.show.author') }} : </label>
+                        <label class="col-md-4 col-md-offset-1">{{ __('messages.admin.books.show.bookmaker') }} : </label>
                         <div class="col-md-6">
                             <p class="form-control-static">{{ $book->bookmaker }}</p>
                         </div>
