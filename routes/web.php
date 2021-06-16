@@ -68,5 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
     Route::get('book-search', 'HomeController@bookSearch')->name('books.search');
 });
 
+Route::get('get-lang-data', 'HomeController@getLangData')->name('get-lang-data');
+
 
 

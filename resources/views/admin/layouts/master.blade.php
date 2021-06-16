@@ -137,6 +137,10 @@
         <script src="/js/vendor/bootstrap.min.js"></script>
         <script src="/js/plugins.js"></script>
         <script src="/js/app.js"></script>
+        <script>
+            var langUrl = "{{ route('get-lang-data') }}";
+        </script>
+        <script src="/js/scripts.js"></script>
         @yield('scripts')
     </body>
 </html>

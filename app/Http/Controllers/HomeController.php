@@ -10,6 +10,7 @@ use App\User;
 use Carbon\Carbon;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Morilog\Jalali\Jalalian;
 
 class HomeController extends Controller
@@ -176,5 +177,12 @@ class HomeController extends Controller
     public function statistics()
     {
         return view('admin.statistics');
+    }
+
+    public function getLangData()
+    {
+        $langData = Lang::get('messages.js');
+
+        return response($langData);
     }
 }

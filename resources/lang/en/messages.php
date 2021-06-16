@@ -158,6 +158,16 @@ return [
                 'no_results_found' => 'No Resluts found',
             ]
         ]
+    ],
+
+    'js' => [
+        'books' => [
+            'search' => [
+                'show' => 'Show',
+                'available' => 'Available',
+                'not_available' => 'Not Available',
+            ]
+        ]
     ]
 
 ];
