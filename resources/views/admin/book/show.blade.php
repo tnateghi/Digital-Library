@@ -89,7 +89,6 @@
                     <div class="form-group form-actions">
                         <div class="col-md-12 col-md-offset-1">
                             <a href="{{ route('books.edit', ['book' => $book->id]) }}"><button type="button" class="btn btn-effect-ripple btn-success" style="overflow: hidden; position: relative;"><i class="fa fa-edit"></i> {{ __('messages.admin.books.show.edit') }}</button></a>
-                            <button onclick="newWindow = window.open('{{ asset(barcode($book->id)) }}');newWindow.print();" type="button" class="btn btn-effect-ripple btn-warning" style="overflow: hidden; position: relative;"><i class="fa fa-print"></i> {{ __('messages.admin.books.show.print_barcode') }}</button>
                             <a href="#modal-fade" data-toggle="modal"><button type="button" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative;"><i class="fa fa-trash-o"></i> {{ __('messages.admin.books.show.delete') }}</button></a>
 
                         </div>
