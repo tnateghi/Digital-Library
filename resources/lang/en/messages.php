@@ -31,7 +31,7 @@ return [
         ],
 
         'footer' => [
-            'footer_text' => 'Develpoed with <i class="fa fa-heart text-danger"></i> by <a target="_blank" href="https://t-nateghi.ir/">Nateghi</a>',
+            'footer_text' => 'Develpoed with <i class="fa fa-heart text-danger"></i> by Kokila',
         ]
 
     ],
