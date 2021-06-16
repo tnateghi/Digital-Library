@@ -90,6 +90,19 @@ return [
                 'status_available' => 'Available',
                 'status_notavailable' => 'Not Available',
                 'view' => 'View',
+            ],
+            'create' => [
+                'create_book' => 'Create new book',
+                'book_name' => 'Book name',
+                'author' => 'Author',
+                'bookmaker' => 'Bookmaker',
+                'count' => 'Count',
+                'category' => 'Category',
+                'please_select' => 'Please select',
+                'edition_year' => 'Edition Year',
+                'description' => 'Description',
+                'create_book' => 'Create Book',
+                'reset_form' => 'Reset Form',
             ]
         ]
     ]
