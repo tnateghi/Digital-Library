@@ -103,6 +103,17 @@ return [
                 'description' => 'Description',
                 'create_book' => 'Create Book',
                 'reset_form' => 'Reset Form',
+            ],
+            'categories' => [
+                'create_category' => 'Create Category',
+                'edit_category' => 'Edit Category',
+                'delete_category' => 'Delete Category',
+                'category_name' => 'Category Name',
+                'save' => 'Save',
+                'reset_form' => 'Reset Form',
+                'category_for_edit' => 'Category for edit',
+                'please_select_category' => 'Please Select a category',
+                'category_new_name' => 'Category new name',
             ]
         ]
     ]
