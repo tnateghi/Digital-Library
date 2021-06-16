@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -33,9 +34,15 @@ class BookController extends Controller
         return redirect(route('books.index'));
     }
 
-    public function update(Book $book)
+    public function update(Book $book, Request $request)
     {
         $this->validation();
+
+        $filepath = null;
+        if ($file = $request->file('file')) {
+            $filename = time() .  $file->getClientOriginalName();
+            $filepath = $file->storeAs('files', $filename, 'uploads');
+        }
 
         $book->update([
             'name' => request('bookName'),
@@ -45,6 +52,7 @@ class BookController extends Controller
             'ed_year' => request('ed_year'),
             'description' => request('description'),
             'category_id' => request('category'),
+            'file' => $filepath
         ]);
 
         session()->flash('message', __('messages.admin.books.messages.updated'));
@@ -62,6 +70,12 @@ class BookController extends Controller
     {
         $this->validation();
 
+        $filepath = null;
+        if ($file = $request->file('file')) {
+            $filename = time() .  $file->getClientOriginalName();
+            $filepath = $file->storeAs('files', $filename, 'uploads');
+        }
+
         auth()->user()->books()->create([
             'name' => request('bookName'),
             'author' => request('author'),
@@ -70,6 +84,8 @@ class BookController extends Controller
             'ed_year' => request('ed_year'),
             'description' => request('description'),
             'category_id' => request('category'),
+            'file' => $filepath
+
         ]);
 
         session()->flash('message', __('messages.admin.books.messages.created'));

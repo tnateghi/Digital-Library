@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row">
+    {{-- <div class="row">
 
         <div class="col-sm-6 col-lg-3">
             <a class="widget" href="{{ route('users.index') }}">
@@ -148,7 +148,7 @@
             </div>
         @endif
 
-    </div>
+    </div> --}}
 
 @endsection
 

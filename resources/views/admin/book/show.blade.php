@@ -27,6 +27,7 @@
                             <p class="form-control-static">{{ $book->author }}</p>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-4 col-md-offset-1">{{ __('messages.admin.books.show.bookmaker') }} : </label>
                         <div class="col-md-6">
@@ -49,6 +50,18 @@
                         <label class="col-md-4 col-md-offset-1">{{ __('messages.admin.books.show.edition_year') }} : </label>
                         <div class="col-md-6">
                             <p class="form-control-static">{{ $book->ed_year }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-md-offset-1">file : </label>
+                        <div class="col-md-6">
+                            <p class="form-control-static">
+                                @if ($book->file)
+                                    <a href="{{ $book->fileUrl() }}">download file</a>
+                                @else
+                                    -
+                                @endif
+                            </p>
                         </div>
                     </div>
 

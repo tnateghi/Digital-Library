@@ -18,7 +18,7 @@
                 <!-- END Form Validation Title -->
 
                 <!-- Form Validation Form -->
-                <form action="{{ route('books.update', ['book' => $book]) }}" id="form-validation"  method="post" class="form-horizontal form-bordered">
+                <form action="{{ route('books.update', ['book' => $book]) }}" id="form-validation"  method="post" class="form-horizontal form-bordered" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     {{ method_field('PATCH') }}
 
@@ -33,6 +33,13 @@
                         <label class="col-md-3 control-label" for="val-author">{{ __('messages.admin.books.show.author') }} <span class="text-danger">*</span></label>
                         <div class="col-md-6">
                             <input type="text" id="val-author" name="author" class="form-control" value="{{ $book->author }}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="val-file">file <span class="text-danger">*</span></label>
+                        <div class="col-md-7">
+                            <input type="file" id="val-file" name="file" class="form-control" >
                         </div>
                     </div>
 

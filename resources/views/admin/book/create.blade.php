@@ -36,7 +36,7 @@
                 <!-- END Form Validation Title -->
 
                 <!-- Form Validation Form -->
-                <form action="{{ route('books.store') }}" id="form-validation"  method="post" class="form-horizontal form-bordered">
+                <form action="{{ route('books.store') }}" id="form-validation"  method="post" class="form-horizontal form-bordered" enctype="multipart/form-data">
                     {!! csrf_field() !!}
 
                     <div class="form-group">
@@ -57,6 +57,12 @@
                         <label class="col-md-3 control-label" for="val-bookmaker">{{ __('messages.admin.books.create.bookmaker') }} <span class="text-danger">*</span></label>
                         <div class="col-md-7">
                             <input type="text" id="val-bookmaker" name="bookmaker" class="form-control" value="{{ old('bookmaker') }}" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="val-file">file <span class="text-danger">*</span></label>
+                        <div class="col-md-7">
+                            <input type="file" id="val-file" name="file" class="form-control" >
                         </div>
                     </div>
 

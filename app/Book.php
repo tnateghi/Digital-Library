@@ -34,4 +34,9 @@ class Book extends Model
             ->orWhere('bookmaker', $keyword);
         return $query;
     }
+
+    public function fileUrl()
+    {
+        return asset('uploads/' . $this->file);
+    }
 }
