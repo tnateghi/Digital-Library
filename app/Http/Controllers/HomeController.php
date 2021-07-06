@@ -24,6 +24,8 @@ class HomeController extends Controller
 
     public function index()
     {
+        return redirect()->route('dashboard');
+
         $articles = Article::where('status', 'publish')->latest()->paginate(10);
         $articlesChunk = $articles->chunk(2);
 

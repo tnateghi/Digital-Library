@@ -8,7 +8,7 @@
             <div class="block">
                 <!-- General Elements Title -->
                 <div class="block-title">
-                    <h2>پروفایل کاربری من</h2>
+                    <h2>your profile</h2>
                 </div>
 
                 <!-- END General Elements Title -->
@@ -16,7 +16,7 @@
                 <!-- General Elements Content -->
                 <form method="post" class="form-horizontal form-bordered">
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">تصویر پروفایل : </label>
+                        <label class="col-md-4 col-md-offset-1">photo : </label>
                         <div class="col-md-7">
                             <div class="widget">
                                 <img src="{{ $user->getImage }}" style="border-radius: 10px;width:100px;height:100px;" alt="avatar" class="img-circle">
@@ -24,32 +24,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">نام : </label>
+                        <label class="col-md-4 col-md-offset-1">first name : </label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->firstName }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">نام خانوادگی : </label>
+                        <label class="col-md-4 col-md-offset-1">last name : </label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->lastName }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">کد ملی (نام کاربری) : </label>
+                        <label class="col-md-4 col-md-offset-1">username : </label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->username }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">تاریخ عضویت : </label>
+                        <label class="col-md-4 col-md-offset-1">created date : </label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->created_at }}</p>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 col-md-offset-1">تلفن : </label>
+                    {{-- <div class="form-group">
+                        <label class="col-md-4 col-md-offset-1">phone : </label>
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->tel }}</p>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="col-md-7">
                             <p class="form-control-static">{{ $user->status }}</p>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </form>
                 <!-- END General Elements Content -->

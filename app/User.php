@@ -60,10 +60,10 @@ class User extends Authenticatable
         return "{$this->firstName} {$this->lastName}";
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        return jDate($value)->format('%d %B %Y');
-    }
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     return jDate($value)->format('%d %B %Y');
+    // }
 
     public function getGetImageAttribute()
     {

@@ -60,14 +60,14 @@
                     </a>
                 </li>
                 <li class="divider"><li>
-                @can('settings-admin')
+                {{-- @can('settings-admin')
                     <li>
                         <a href="{{ route('settings') }}">
                             <i class="gi gi-settings fa-fw pull-right"></i>
                             {{ __('messages.admin.navbar.settings') }}
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
                 <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="post">{!! csrf_field() !!}</form>
                     <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">

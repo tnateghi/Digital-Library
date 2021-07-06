@@ -22,7 +22,7 @@ Route::get('faq', 'HomeController@faq')->name('faq');
 Route::get('article/{article}', 'HomeController@show')->name('article.show');
 Route::post('article/{article}/comment', 'CommentController@store')->middleware('auth')->name('comment.store');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('settings', 'HomeController@settings')->name('settings')->middleware('can:settings-admin');
     Route::get('statistics', 'HomeController@statistics')->name('statistics');

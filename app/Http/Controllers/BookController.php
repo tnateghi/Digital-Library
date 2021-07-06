@@ -57,7 +57,7 @@ class BookController extends Controller
 
         session()->flash('message', __('messages.admin.books.messages.updated'));
 
-        return redirect(route('books.index'));
+        return redirect()->route('books.index');
     }
 
     public function index()
